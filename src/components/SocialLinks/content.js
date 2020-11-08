@@ -10,7 +10,7 @@ const links = [
     url: `https://twitter.com/${handle}`,
   },
   {
-    label: "LinkedIn",
+    label: "LinkedinSquare",
     url: `https://linkedin.com/in/${handle}`,
   },
   {
