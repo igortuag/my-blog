@@ -1,11 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Igor Tuag`,
-    description: `Desenvolvo de apps web, mobile e desktop na Uppersoft e nas horas vagas escrevo sobre o mundo front-end, carreira, minhas experiências e outras coisas mais.`,
+    description: `Desenvolvedor na Uppersoft e nas horas vagas, escrevo sobre frontend, minhas experiências e outras coisas mais.`,
     position: `Frontend Developer`,
     author: `@igortuag`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
