@@ -1,39 +1,60 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import PostItem from "../components/PostItem"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <PostItem
-      slug="/about/"
-      category="Misc"
-      date="30 de Julho de 2019"
-      timeToRead="5"
-      title="Diga não ao Medium: tenha sua própria plataforma"
-      description="Algumas razões para você ter sua própria plataforma ao invés de soluções como o Medium"
-    />
-    <PostItem
-      slug="/about/"
-      category="Misc"
-      background="#040"
-      date="30 de Julho de 2019"
-      timeToRead="5"
-      title="Diga não ao Medium: tenha sua própria plataforma"
-      description="Algumas razões para você ter sua própria plataforma ao invés de soluções como o Medium"
-    />
-    <PostItem
-      slug="/about/"
-      category="Misc"
-      background="#610"
-      date="30 de Julho de 2019"
-      timeToRead="5"
-      title="Diga não ao Medium: tenha sua própria plataforma"
-      description="Algumas razões para você ter sua própria plataforma ao invés de soluções como o Medium"
-    />
-  </Layout>
-)
+const IndexPage = () => {
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query postList {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                background
+                category
+                date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+                description
+                title
+              }
+              timeToRead
+            }
+          }
+        }
+      }
+    `
+  )
 
+  const postList = allMarkdownRemark.edges
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      {postList.map(
+        ({
+          node: {
+            fields: { slug },
+            frontmatter: { background, category, date, description, title },
+            timeToRead,
+          },
+        }) => (
+          <PostItem
+            slug={slug}
+            category={category}
+            date={date}
+            background={background}
+            timeToRead={timeToRead}
+            title={title}
+            description={description}
+          />
+        )
+      )}
+    </Layout>
+  )
+}
 export default IndexPage
