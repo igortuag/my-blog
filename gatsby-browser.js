@@ -1,7 +1,4 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+import "lazysizes"
 
-// You can delete this file if you're not using it
+// gatsby-browser.js
+require("prismjs/themes/prism-tomorrow.css")
