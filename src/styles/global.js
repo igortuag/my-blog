@@ -64,7 +64,7 @@ img {
 	height: auto;
 }
 
-body {
+body.dark {
 	--borders: #38444d;
   --texts: #8899a6;
   --postColor: #fff;
@@ -75,7 +75,7 @@ body {
   --black: #222;
 }
 
-body {
+body.light {
 	--borders: #dedede;
   --postColor: #111;
   --texts: #555555;
