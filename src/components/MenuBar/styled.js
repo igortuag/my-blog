@@ -12,8 +12,8 @@ export const MenuBarWrapper = styled.aside`
   height: 100vh;
   width: 3.75rem;
   padding: 0.8rem 0;
-  border-left: 1px solid #38444d;
-  background: #192734;
+  border-left: 1px solid var(--borders);
+  background: var(--mediumBackground);
 
   text-align: center;
 `
@@ -28,7 +28,7 @@ export const MenuBarLink = styled(Link)`
 `
 
 export const MenuBarItem = styled.span`
-  color: #8899a6;
+  color: var(--texts);
   cursor: pointer;
   display: block;
   height: 3.75rem;
@@ -36,7 +36,15 @@ export const MenuBarItem = styled.span`
   padding: 1.1rem;
   transition: color 0.5s;
 
+  &.light {
+    color: #d4d400;
+
+    &:hover {
+      color: #e2e240;
+    }
+  }
+
   &:hover {
-    color: #1fa1f2;
+    color: var(--highlight);
   }
 `
