@@ -2,9 +2,18 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import * as S from "./styled"
+import getThemeColor from '../../utils/getThemeColor'
 
-const PostItem = ({ slug, category, background, date, timeToRead, title, description }) => (
-  <S.PostItemLink to={slug}>
+const PostItem = ({
+  slug,
+  category,
+  background,
+  date,
+  timeToRead,
+  title,
+  description,
+}) => (
+  <S.PostItemLink to={slug} direction="right" cover bg={getThemeColor()} duration={0.6}>
     <S.PostItemWrapper>
       <S.PostItemTag background={background}>{category}</S.PostItemTag>
       <S.PostItemInfo>
@@ -25,7 +34,7 @@ PostItem.propTypes = {
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
 }
 
 export default PostItem
