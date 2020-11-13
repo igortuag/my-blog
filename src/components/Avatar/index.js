@@ -1,9 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import * as S from "./styled.js"
+import * as S from "./styled"
 
-const Avatar = ({ children }) => {
+const Avatar = () => {
   const { avatarImage } = useStaticQuery(
     graphql`
       query {
