@@ -1,6 +1,6 @@
 require("dotenv").config()
 
-const queries = require('./src/utils/algolia_queries')
+const queries = require("./src/utils/algolia_queries")
 
 module.exports = {
   siteMetadata: {
@@ -8,6 +8,7 @@ module.exports = {
     description: `Desenvolvedor na Uppersoft e nas horas vagas, escrevo sobre frontend, minhas experiências e outras coisas mais.`,
     position: `Frontend Developer`,
     author: `@igortuag`,
+    siteUrl: `https://igortuag.com`,
   },
   plugins: [
     `gatsby-plugin-transition-link`,
