@@ -22,3 +22,9 @@ export const SidebarWrapper = styled.aside`
     width: 100%;
   `}
 `
+
+export const SidebarLinks = styled.aside`
+  ${media.lessThan("large")`
+    display: none;
+  `}
+`
