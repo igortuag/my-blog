@@ -12,7 +12,7 @@ export const SidebarWrapper = styled.aside`
   padding: 2rem;
   border-right: 1px solid var(--borders);
   background: var(--mediumBackground);
-  
+
   text-align: center;
 
   ${media.lessThan("large")`
@@ -20,5 +20,12 @@ export const SidebarWrapper = styled.aside`
     height: auto;
     padding: 1rem 2rem;
     width: 100%;
+  `}
+`
+
+export const SidebarLinks = styled.aside`
+  width: 100%;
+  ${media.lessThan("large")`
+    display: none;
   `}
 `
