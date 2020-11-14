@@ -2,7 +2,7 @@ backend:
   name: github
   repo: igortuag/my-blog
   branch: master
-  site_domain: https://igortuag.netlify.app/
+  site_domain: igortuag.netlify.app
 
 publish_mode: editorial_workflow
 media_folder: "static/assets/img"
