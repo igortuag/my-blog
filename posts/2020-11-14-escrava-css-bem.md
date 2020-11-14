@@ -1,5 +1,5 @@
 ---
-title: Escrava CSS BEM
+title: Escreva CSS BEM
 description: Uma ótima forma de escrever css
 date: 2020-11-14 03:20:18
 thumbnail: assets/img/css-problems.gif
