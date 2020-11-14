@@ -15,7 +15,7 @@ const AboutPage = () => (
     <MainContent>
       <h1>Sobre mim</h1>
       <p>
-        Me chamo Igor Tuag, nasci em Ariquemes/RO e sou um desenvolvedor de soluções através de softwares. Atuando pricipalmente no{" "}
+        Me chamo Igor Tuag, nasci em Ariquemes/RO e sou um desenvolvedor de soluções através de softwares. Atuo pricipalmente no{" "}
         <a
           href="https://tgmarinho.github.io/resume/"
           rel="noopener noreferrer"
@@ -27,11 +27,11 @@ const AboutPage = () => (
       </p>
 
       <p>
-        Apesar de ser formado em Engenharia Civil, a paixão por desenvolvimento de softwares falou mais alto. Desde então tenho me dedicado em aprimorar meus conhecimentos e abraçar de vez está maravilhosa área da tecnologia da informação.
+        Apesar de ser formado em Engenharia Civil, a paixão por desenvolvimento de softwares falou mais alto. Desde então, tenho me dedicado em aprimorar meus conhecimentos e abraçar de vez esta maravilhosa área da tecnologia da informação.
       </p>
 
       <p>
-        Hoje faço parte do time de desenvolvedores da {" "}
+        Hoje moro em Vila Velha/ES e faço parte do time de desenvolvedores da {" "}
         <a
           href="https://uppersoft.com.br/"
           rel="noopener noreferrer"
@@ -39,7 +39,7 @@ const AboutPage = () => (
         >
         Uppersoft
         </a>
-        {" "} atuando principalmente com as seguintes tecnologias: JavaScript e seus frameworks como Vue e Electron, HTML e CSS com pré-processadores.
+        {" "}, atuando principalmente com as seguintes tecnologias: JavaScript e seus frameworks como Vue e Electron, HTML e CSS com pré-processadores.
       </p>
 
       <p>Sou muito bem casado e feliz com minha esposa{" "}
@@ -48,19 +48,19 @@ const AboutPage = () => (
           rel="noopener noreferrer"
           target="_blank"
         >
-        Polyane
+        Polyane,
         </a>
         {" "}
         que também é desenvolvedora.</p>
 
       <p>
-        Nas horas vagas gosto de caminhar na praia, ler livros, assistir um bom filme ou serie, receber e compartilhar conhecimento.
+        Nas horas vagas, gosto de caminhar na praia, ler livros, assistir um bom filme ou série, e receber e compartilhar conhecimento.
       </p>
 
       <h2>Experiências</h2>
 
       <p>
-        Um curioso por natureza, já tive contato com diversas tecnologias. Desde infra estrutura, com manutenção de computadores, gerenciamento de banco de dados (SQL, PostGress, MySQL...), dockers, criação de APIs com C# .net, node JS, mobile com react native e fluter, até o frontend onde me encontro hoje e me sinto muito satisfeito. 
+        Um curioso por natureza, já tive contato com diversas tecnologias. Desde infra estrutura, com manutenção de computadores, gerenciamento de banco de dados (SQL, PostGress, MySQL...), dockers, criação de APIs com C# .net, node JS, mobile com react native e fluter, até o frontend, onde me encontro hoje e me sinto muito satisfeito. 
       </p>
 
       <h2>Contato</h2>
