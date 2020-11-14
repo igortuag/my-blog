@@ -6,100 +6,150 @@ thumbnail: assets/img/css-problems.gif
 category: css
 background: "#2DA0C3"
 ---
-<!--StartFragment-->
+# BEM
 
-Título direto e conteúdo mais ainda — nesse texto, quero explicar para você o que é, como se usa, por que se usa e alguns exemplos de uso do BEM em projetos web. Vamos lá?
+BEM é basicamente uma metodologia para escrever CSS, que eu em particularmente gosto muito e uso no dia a dia. 
 
-# Primeiro, o que é BEM?
+Sua sintaxe pode parecer estranha e verbosa, mas basta entender e se acostumar que depois você vai achar estranho quando não usar.
 
-BEM é uma metodologia, uma convenção, um padrão de nomenclatura que utilizamos para manter o nosso projeto simples e organizado. O principal objetivo dessa metodologia, além de manter os códigos simples na hora da escrita e (principalmente) da manutenção, é fazer com que qualquer desenvolvedor possa ter total autonomia para mexer em qualquer tipo de projeto — seja um projeto que você já conheça ou um projeto no qual você acabou de entrar.
+A sigla significa *Block Element Modifier*, em português, *Bloco Elemento Modificador,* que são os três grandes pilares dessa metodologia.
 
-Essa metodologia é aplicada na nomenclatura das classes CSS dos nossos elementos HTML. A sigla BEM significa *Block Element Modifier*, em português, *Bloco Elemento Modificador* — esses 3 pilares são as bases dessa metodologia e também são as categorias nas quais vamos dividir nossos elementos.
+## Bloco
 
-Mostrando diretamente isso em um código simples, imagine a seguinte situação: ***construir um newsfeed***.
+O bloco, ou mais comumente chamado de componente é uma parte independente do seu código, que pode ser reutilizada. Um menu, por exemplo, pode ser tratado como um componente.
 
-Basicamente, se trata de uma lista (ordenada ou não) com alguns elementos dentro de cada item**\***. Embora listas sejam um exemplo saturado para usar, elas cabem muito bem na explicação de como utilizar a metodologia.
-
-> **\***poderíamos utilizar também uma estrutura composta por várias `<div>` e apenas ajustar o CSS, **porém isso não é uma boa prática** — não segue os web standards e, em consequência, o SEO da sua página ficará horrível.
-
-Construindo o nosso newsfeed utilizando o padrão BEM, a estrutura ficaria mais ou menos assim:
+HTML
 
 ```
-
+<ul class="menu">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
 ```
 
-No exemplo acima, temos um bloco e alguns elementos. Onde:
+SCSS
 
-* `.list` é um **bloco;**
-* `.list__item`, `.list__title`, `.list__author` e `.list__text` são **elementos;**
-
-Para contemplar os modificadores no exemplo, imagine que algumas publicações terão um certo destaque em relação as outras. Dessa forma, nossa estrutura ficaria assim:
-
+```scss
+.menu { }
 ```
 
-```
+Até ai, nada novo, mas geralmente também precisamos estilizar o que esta dentro do menu, e é ai que entra os elementos.
 
-Ou seja, explicando agora o padrão da nomenclatura que utilizamos:
+## Elementos
 
-* Nossa primeira classe sempre será o bloco: `.list`
-* Para criarmos os elementos, utilizamos 2 underlines ( __ ) após o nome do nosso bloco: `.list__item`, `.list__title`
-* Para criarmos os modificadores, utilizamos 2 traços (— ) no nosso bloco ou elemento: `.list__item--highlight`, `.list__author--active`
-
-# Como saber o que é um elemento e o que é um modificador?
-
-Um **elemento** sempre será uma parte, um complemento da estrutura do bloco. Seguindo nossos exemplos acima, um item de uma lista, o título de uma publicação.
-
-*Os **modificadores** são estados que os nossos blocos ou elementos poderão ter: um botão com diferentes aparências, uma situação de destaque.*
-
-Geralmente, os modificadores fazem com que algumas propriedades dos blocos/elementos sejam complementadas — *background-color*, *font-weight*, *borders*, *opacity*, ou até mesmo o *display* e o *position*.
-
-É importante lembrar também que **um elemento não pode estar dentro de outro**. Por exemplo:
+Elementos são pedaços do componente e no BEM usamos dois underlines seguidos de um nome para denomina-los.
 
 ```
-
+<ul class="menu">
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+</ul>
 ```
 
-Quando nos deparamos com essa situação, devemos utilizar a seguinte estrutura:
+SCSS
 
+```scss
+.menu {
+  &__item { }
+}
 ```
 
-```
 
-E eis aqui o porque disso:
 
-> Um bloco é uma entidade independente, um componente de uma aplicação. Um bloco pode ser simples ou composto — contendo outros blocos.
+Assim podemos ver claramente de qual componente um elemento se trata. Contudo ai mora uma pegadinha, imagine que este item possua um elemento dentro dele no HTML, o mais intuitivo a se pensar é sair escrevendo desta forma
 
-É uma questão de contexto: `.list` é o nosso *bloco composto* (compound block), que possui outro bloco composto, `.list__item`. E `.list__title` é apenas um bloco, contido dentro de `.list__item`.
-
-Também, podemos utilizar o esquema de 2 classes:
+HTML
 
 ```
-
+<ul class="menu">
+  <li class="menu__item">
+    <h2 class="menu__item__name"></h2> 
+  </li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+</ul>
 ```
 
-É uma solução que funciona, porém deve ser utilizada com moderação para não saturar seu elemento com diversas classes.
+SCSS
 
-Não é uma regra, mas é uma boa prática utilizar o padrão `__` apenas 1x dentro do nome da sua classe (apenas 1 elemento). Se você está chegando em nomenclaturas com mais de um elemento, é bom rever a estrutura utilizada!
+```scss
+.menu {
+  &__item { 
+    &__name {
+    }
+  }
+}
+```
 
-# Boas práticas com BEM
+Contudo não é uma boa pratica, não precisamos seguir a estrutura do html. O Componente definido é o menu e não o item dele, então podemos apenas dizer que o nome é outro elemento de menu e escrever assim:
 
-Algumas boas práticas são associadas ao BEM, porém, não necessariamente, fazem parte da metodologia — a metodologia aliada a essas boas práticas comuns acabam formando um conjunto sensacional.
+HTML
 
-Independente do uso da metodologia, uma boa prática que você pode/deve seguir quando escreve CSS é em relação a **especificidade** — quanto menor ela for, melhor será seu código, pois assim você não terá problemas para sobrescrever propriedades e evitará utilizar `!important`.
+```
+<ul class="menu">
+  <li class="menu__item">
+    <h2 class="menu__name"></h2>
+  </li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+  <li class="menu__item"></li>
+</ul>
+```
 
-Assim como dito ali em cima, outra boa prática é evitar um grande número de classes nos elementos HTML; a exceção para esse caso seria apenas a aplicação de modificadores:\
-`<button class="button button--blue button--outline">Click Me</button>`
+SCSS
 
-Recentemente, eu encontrei um post maravilhoso falando sobre 5 problemas comuns com o uso do BEM e como resolvê-los de maneira elegante:
+```scss
+.menu {
+  
+  &__item { }
+  
+  &__name { }
+}
+```
 
-> Battling BEM — 5 common problems and how to avoid them
->
-> <https://medium.com/fed-or-dead/battling-bem-5-common-problems-and-how-to-avoid-them-5bbd23dee319>
+Agora você deve estar se perguntando, e se eu quiser deixar algum elemento diferente, seja colocando de outra cor ou aumentando o seu tamanho? E é ai que entra os modificadores.
 
-# Conclusão
+## Modificadores
 
-Essa metodologia é incrivelmente fácil de usar e é um excelente aliado. Ela pode ser aplicada em qualquer projeto web — seja um site, sistema, webapp, landing page, hotsite… E também ela é independente aos frameworks/ferramentas que você está utilizando em seu projeto — React, Vue, jQuery, Angular, Ember, Meteor, Sass, PostCSS…
+Tanto o bloco como o elemento podem ter modificadores, e como próprio nome já diz ele serve para atribuir uma modificação, como por exemplo: 
 
-No começo pode ser um pouco estranho — até você se acostumar com a ideia do padrão; mas, além de proporcionar uma grande organização do projeto e facilidade na escrita/leitura do código, ele também proporciona maior desempenho — você ganha tempo durante o desenvolvimento e consegue fazer muito mais em menores períodos de tempo.
+HTML
 
-<!--EndFragment-->
+```
+<ul class="menu menu--main">
+  <li class="menu__item">
+    <h2 class="menu__name"></h2>
+  </li>
+  <li class="menu__item menu__item--selected"></li>
+  <li class="menu__item"></li>
+  <li class="menu__item menu__item--red"></li>
+</ul>
+```
+
+SCSS
+
+```scss
+.menu {
+  
+  &__item {
+    &--selected {}
+    
+    &--red {}
+  }
+  
+  &__name { }
+  
+  &--main {
+   &__name { }
+    
+   &__name { }
+  }
+}
+```
+
+Fácil, não? Considere fazer alguns testes e ter um CSS mais organizado com o BEM.
