@@ -15,14 +15,14 @@ Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil
 ### Os cheiros 💩
 
 * [Muitas propriedades](#too-many-props)
-* [Propriedades incompatíveis](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#incompatible-props)
-* [Copiando propriedades direto do estado global](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#props-in-state)
-* [Retornar JSX direto da funções](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#jsx-returns)
-* [Vários booleanos no estado global](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#multiple-booleans)
-* [Muitos useState em um componente](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#many-usestate)
-* [useEffect muito longos](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#large-useeffect)
+* [Propriedades incompatíveis](#incompatible-props)
+* [Copiando propriedades direto do estado global](#props-in-state)
+* [Retornar JSX direto da funções](#jsx-returns)
+* [Vários booleanos no estado global](#multiple-booleans)
+* [Muitos useState em um componente](#many-usestate)
+* [useEffect muito longos](#large-useeffect)
 
-## <a id="incompatible-props"> Muitas propriedades </a>
+### <a id="too-many-props"> Muitas propriedades </a>
 
 Passar muitos props (propriedades) em um único componente pode ser um sinal de que o componente deve ser dividido.
 
@@ -98,7 +98,8 @@ const options = {
 
 Isso também significa que é mais fácil excluir opções de configuração que não queremos usar se estivermos passando apenas um objeto de ```options```.
 
-### <a id="#incompatible-props"> Propriedades incompatíveis</>
+### <a id="incompatible-props"> Propriedades incompatíveis </a>
+
 Evite passar por objetos incompatíveis entre si.
 
 Por exemplo, podemos começar criando um componente comum de ```<Input />``` que se destina apenas a lidar com texto, mas depois de um tempo também adicionamos a possibilidade de usá-lo para números de telefone. A implementação pode ser semelhante a esta:
@@ -132,7 +133,7 @@ function PhoneNumberInput({ value }) {
 
 Embora este exemplo seja um pouco superficial, encontrar props incompatíveis uns com os outros é geralmente uma boa indicação de que você deve verificar se o componente precisa ser quebrado.
 
-### <a id="#props-in-state"> Copiando props do estado global (state) </a>
+### <a id="props-in-state"> Copiando props do estado global (state) </a>
  
 Não interrompa o fluxo de dados copiando props do state.
 
@@ -173,7 +174,7 @@ Agora ```slowlyFormatText``` só funciona quando ```text``` muda e não interrom
 > Às vezes, precisamos de uma props onde todas as atualizações sejam ignoradas, por exemplo, um seletor de cores onde precisamos da opção de definir uma cor inicialmente escolhida, mas quando o usuário escolher uma cor, não queremos que uma atualização substitua a escolha do usuário. Nesse caso, não há problema em copiar a props do state, mas para indicar esse comportamento ao usuário, a maioria dos desenvolvedores prefixa o props com initial ou default ( initialColor/ defaultColor).
 
 
-### <a id="#jsx-returns">Retornando JSX de funções</a>
+### <a id="jsx-returns">Retornando JSX de funções</a>
 
 Não retorne JSX de funções dentro de um componente.
 
@@ -219,7 +220,7 @@ Embora possa parecer bom de início, torna mais difícil raciocinar sobre o cód
 
 Lembre-se de que, só porque você criou um novo componente, você não precisa movê-lo para um novo arquivo também. Às vezes, faz sentido manter vários componentes no mesmo arquivo se eles estiverem fortemente acoplados.
 
-### <a id="#multiple-booleans"> Vários booleanos no state </a>
+### <a id="multiple-booleans"> Vários booleanos no state </a>
 
 Evite usar vários booleanos para representar o state de um componente.
 
@@ -287,7 +288,7 @@ Ao fazer assim, removemos a possibilidade de estados impossíveis e tornamos mui
 const [state, setState] =  (useState < "idle") | "loading" | "error" | ("finished" > "idle");
 ```
 
-### <a id="#many-usestate"> Muitos useState </a>
+### <a id="many-usestate"> Muitos useState </a>
 Evite usar muitos hooks ```useState``` no mesmo componente.
 
 Um componente com muitos hooks ```useState``` provavelmente está fazendo muitas coisas️ e provavelmente é um bom candidato a ser quebrado em vários componentes, mas também existem alguns casos complexos em que precisamos gerenciar algum estado complexo em um único componente.
@@ -362,7 +363,7 @@ Usando um redutor, encapsulamos a lógica para gerenciar nosso state removemos a
 
 Ambos useStatee useReducer vêm com seus prós e contras.
 
-### <a id="#large-useeffect"> useEffect muito longos </a>
+### <a id="large-useeffect"> useEffect muito longos </a>
 
 Evite escrever useEffectque muito longos. Eles tornam seu código sujeito a erros além de ser mais difícil raciocinar.
 
@@ -410,3 +411,4 @@ Tudo bem, isso é tudo por agora! Lembre-se de que, de forma alguma, essas não 
 Tem algum feedback sobre por que estou errado sobre isso? Sugestões para outros odores de código que você encontrou em seus componentes? Entre em contato!
 
 Adaptado de [React component code smells](https://antongunnarsson.com/react-component-code-smells/)
+
