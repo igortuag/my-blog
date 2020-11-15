@@ -8,7 +8,7 @@ background: "#00d8ff"
 ---
 Arquitetura de código é muito importante para escalabilidade de um código e futuras manutenções. Mas se você é iniciante, não se preocupe com isso de imediato, primeiro aprenda resolver o problema.
 
-Gosto de exemplificar fazendo um paralelo com a cozinha. Caso não saiba cozinhar, pouco adianta saber fazer o misa place. Minhas avós cozinham super bem e não se preocupam com isso, mas você há de convir que em uma cozinha grande de um restaurante, isso se torna fundamental para garantir uma entrega de qualidade.
+Gosto de exemplificar fazendo um paralelo com a cozinha. Caso não saiba cozinhar, pouco adianta saber fazer o misa en place. Minhas avós cozinham super bem e não se preocupam com isso, mas você há de convir que em uma cozinha grande de um restaurante, isso se torna fundamental para garantir uma entrega de qualidade.
 
 Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil de manter.
 
@@ -24,13 +24,13 @@ Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil
 
 ### <a id="too-many-props"> Muitas propriedades (props) </a>
 
-Passar muitos props em um único componente pode ser um sinal de que o componente deve ser dividido.
+Passar muitas props em um único componente pode ser um sinal de que o componente deve ser dividido.
 
-Ai você pergunta, mas quantas props são demais? Bem, isto depende". Você pode se encontrar em uma situação em que um componente tenha 20 props ou mais e ainda estar ok porque faz apenas uma coisa. Mas quando você se depara com um componente que já tem muitas props e  sente o desejo de adicionar apenas mais uma para esta longa lista, há algumas coisas a se considerar:
+Aí você pergunta... mas quantas props são demais? Bem, isto depende". Você pode encontrar uma situação em que um componente tenha 20 props ou mais e ainda estar ok, porque faz apenas uma coisa. Mas quando você se depara com um componente que já tem muitas props e  sente o desejo de adicionar apenas mais uma para esta longa lista, há algumas coisas a se considerar:
 
 #### Este componente está fazendo várias coisas?
 
-Assim como as funções, os componentes devem fazer apenas uma coisa e bem feito, por isso é sempre bom verificar se é possível dividir o componente em vários componentes menores. Por exemplo, se o componente tem props incompatíveis ou retorna JSX de funções.
+Assim como as funções, os componentes devem fazer apenas uma coisa e bem feito. Por isso, é sempre bom verificar se é possível dividir o componente em vários componentes menores. Por exemplo, se o componente tem props incompatíveis ou retorna JSX de funções.
 
 #### Posso usar composição?
 
@@ -59,7 +59,7 @@ Olhando para as props deste componente, podemos ver que todas elas estão relaci
 </ApplicationForm>
 ```
 
-Agora nos certificamos de que o ApplicationForm apenas com sua responsabilidade: enviar ou cancelar o formulário. Os componentes filhos podem lidar com tudo relacionado à sua parte no quadro geral. Esta também é uma ótima oportunidade de usar o React Context para a comunicação entre os filhos e seus pais.
+Agora nos certificamos de que o ApplicationForm tem apenas uma responsabilidade: enviar ou cancelar o formulário. Os componentes filhos podem lidar com tudo relacionado à sua parte no quadro geral. Esta também é uma ótima oportunidade de usar o React Context para a comunicação entre os filhos e seus pais.
 
 #### Estou passando muitas props para 'configuração'?
 
@@ -78,7 +78,7 @@ Em alguns casos, é uma boa ideia agrupar adereços em um objeto de opções, po
 />
 ```
 
-Todos essas props, exceto `data` podem ser consideradas configurações. Nesses casos, às vezes é uma boa ideia alterar o `Grid` para que ele aceite um objeto de opções: `options`.
+Todos essas props, exceto `data` , podem ser consideradas configurações. Nesses casos, às vezes é uma boa ideia alterar o `Grid` para que ele aceite um objeto de opções: `options`.
 
 ```jsx
 const options = {
@@ -101,7 +101,7 @@ Isso também significa que é mais fácil excluir opções de configuração que
 
 ### <a id="incompatible-props"> Props incompatíveis </a>
 
-Evite passar por objetos incompatíveis entre si.
+Evite passar props incompatíveis entre si para um componente.
 
 Por exemplo, podemos começar criando um componente comum de `<Input />` que se destina apenas a lidar com texto, mas depois de um tempo também adicionamos a possibilidade de usá-lo para números de telefone. A implementação pode ser semelhante a esta:
 
