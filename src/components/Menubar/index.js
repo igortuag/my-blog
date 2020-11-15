@@ -8,7 +8,7 @@ import { Grid } from "@styled-icons/boxicons-solid/Grid"
 import { ThList as List } from "@styled-icons/typicons/ThList"
 
 import * as S from "./styled"
-import getThemeColor from '../../utils/getThemeColor'
+import getThemeColor from "../../utils/getThemeColor"
 
 const MenuBar = () => {
   const [theme, setTheme] = useState(null)
@@ -72,7 +72,10 @@ const MenuBar = () => {
         >
           {isListMode ? <Grid /> : <List />}
         </S.MenuBarItem>
-        <S.MenuBarItem title="Ir para o topo">
+        <S.MenuBarItem
+          title="Ir para o topo"
+          onClick={() => window.scroll({ top: 0, behavior: "smooth" })}
+        >
           <Arrow />
         </S.MenuBarItem>
       </S.MenuBarGroup>
