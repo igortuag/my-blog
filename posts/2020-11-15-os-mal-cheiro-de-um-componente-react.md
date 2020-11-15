@@ -1,7 +1,7 @@
 ---
-title: Os mal cheiro de um componente React
-description: Uma lista de fatores que pode deixar seu componente React fedido.
-date: 2020-11-15 09:15:16
+title: Os mal cheiros de um componente react
+description: Uma lista de características ruins para um componente react ter.
+date: 2020-11-15 10:55:37
 thumbnail: assets/img/dog-bad-smell.png
 category: react
 background: "#00d8ff"
@@ -14,17 +14,17 @@ Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil
 
 ### Os cheiros 💩
 
-* [Muitas propriedades](#too-many-props)
-* [Propriedades incompatíveis](#incompatible-props)
-* [Copiando propriedades direto do estado global](#props-in-state)
+* [Muitas propriedades (props)](#too-many-props) 
+* [Props incompatíveis](#incompatible-props)
+* [Pegando props direto do estado global (state)](#props-in-state)
 * [Retornar JSX direto da funções](#jsx-returns)
-* [Vários booleanos no estado global](#multiple-booleans)
+* [Vários booleanos no state](#multiple-booleans)
 * [Muitos useState em um componente](#many-usestate)
 * [useEffect muito longos](#large-useeffect)
 
-### <a id="too-many-props"> Muitas propriedades </a>
+### <a id="too-many-props"> Muitas propriedades (props) </a>
 
-Passar muitos props (propriedades) em um único componente pode ser um sinal de que o componente deve ser dividido.
+Passar muitos props em um único componente pode ser um sinal de que o componente deve ser dividido.
 
 Ai você pergunta, mas quantas props são demais? Bem, isto depende". Você pode se encontrar em uma situação em que um componente tenha 20 props ou mais e ainda estar ok porque faz apenas uma coisa. Mas quando você se depara com um componente que já tem muitas props e  sente o desejo de adicionar apenas mais uma para esta longa lista, há algumas coisas a se considerar:
 
@@ -62,6 +62,7 @@ Olhando para as props deste componente, podemos ver que todas elas estão relaci
 Agora nos certificamos de que o ApplicationForm apenas com sua responsabilidade: enviar ou cancelar o formulário. Os componentes filhos podem lidar com tudo relacionado à sua parte no quadro geral. Esta também é uma ótima oportunidade de usar o React Context para a comunicação entre os filhos e seus pais.
 
 #### Estou passando muitas props para 'configuração'?
+
 Em alguns casos, é uma boa ideia agrupar adereços em um objeto de opções, por exemplo, para tornar mais fácil trocar esta configuração. Se tivermos um componente que exibe algum tipo de grade ou tabela:
 
 ```jsx
@@ -77,7 +78,7 @@ Em alguns casos, é uma boa ideia agrupar adereços em um objeto de opções, po
 />
 ```
 
-Todos essas props, exceto ```data``` podem ser consideradas configurações. Nesses casos, às vezes é uma boa ideia alterar o ```Grid``` para que ele aceite um objeto de opções: ```options```.
+Todos essas props, exceto `data` podem ser consideradas configurações. Nesses casos, às vezes é uma boa ideia alterar o `Grid` para que ele aceite um objeto de opções: `options`.
 
 ```jsx
 const options = {
@@ -96,13 +97,13 @@ const options = {
 />
 ```
 
-Isso também significa que é mais fácil excluir opções de configuração que não queremos usar se estivermos passando apenas um objeto de ```options```.
+Isso também significa que é mais fácil excluir opções de configuração que não queremos usar se estivermos passando apenas um objeto de `options`.
 
-### <a id="incompatible-props"> Propriedades incompatíveis </a>
+### <a id="incompatible-props"> Props incompatíveis </a>
 
 Evite passar por objetos incompatíveis entre si.
 
-Por exemplo, podemos começar criando um componente comum de ```<Input />``` que se destina apenas a lidar com texto, mas depois de um tempo também adicionamos a possibilidade de usá-lo para números de telefone. A implementação pode ser semelhante a esta:
+Por exemplo, podemos começar criando um componente comum de `<Input />` que se destina apenas a lidar com texto, mas depois de um tempo também adicionamos a possibilidade de usá-lo para números de telefone. A implementação pode ser semelhante a esta:
 
 ```jsx
 function Input({ value, isPhoneNumberInput, autoCapitalize }) {
@@ -112,7 +113,7 @@ function Input({ value, isPhoneNumberInput, autoCapitalize }) {
 }
 ```
 
-O problema com isso é que as props ```isPhoneNumberInput``` e  ```autoCapitalize``` não fazem sentido juntas. Não podemos realmente capitalizar números de telefone, não é mesmo?
+O problema com isso é que as props `isPhoneNumberInput` e  `autoCapitalize` não fazem sentido juntas. Não podemos realmente capitalizar números de telefone, não é mesmo?
 
 Nesse caso, a solução provavelmente é dividir o componente em outros componentes menores. Se ainda temos alguma lógica que queremos compartilhar entre eles, podemos movê-la para um custom hook (mixin):
 
@@ -133,8 +134,8 @@ function PhoneNumberInput({ value }) {
 
 Embora este exemplo seja um pouco superficial, encontrar props incompatíveis uns com os outros é geralmente uma boa indicação de que você deve verificar se o componente precisa ser quebrado.
 
-### <a id="props-in-state"> Copiando props do estado global (state) </a>
- 
+### <a id="props-in-state"> Pegando props do estado global (state) </a>
+
 Não interrompa o fluxo de dados copiando props do state.
 
 Exemplo:
@@ -147,9 +148,9 @@ function Button({ text }) {
 }
 ```
 
-Ao passar a propriedade ```text``` como o valor inicial para o useState, o componente agora praticamente ignora todos os valores atualizados de ```text```. Se a props ```text``` for atualizada, o componente ainda renderizaria seu primeiro valor. Para a maioria das props, esse é um comportamento inesperado que, por sua vez, torna o componente mais sujeito a bugs.
+Ao passar a props `text` como o valor inicial para o useState, o componente agora praticamente ignora todos os valores atualizados de `text`. Se a props `text` for atualizada, o componente ainda renderizaria seu primeiro valor. Para a maioria das props, esse é um comportamento inesperado que, por sua vez, torna o componente mais sujeito a bugs.
 
-Um exemplo mais prático desse acontecimento é quando queremos derivar algum novo valor de uma props e especialmente se isso requer algum cálculo lento. No exemplo abaixo, executamos a função ```slowlyFormatText``` para formatar nossa props ```text```, que leva muito tempo para ser executado.
+Um exemplo mais prático desse acontecimento é quando queremos derivar algum novo valor de uma props e especialmente se isso requer algum cálculo lento. No exemplo abaixo, executamos a função `slowlyFormatText` para formatar nossa props `text`, que leva muito tempo para ser executado.
 
 ```jsx
 function Button({ text }) {
@@ -169,10 +170,9 @@ function Button({ text }) {
 }
 ```
 
-Agora ```slowlyFormatText``` só funciona quando ```text``` muda e não interrompemos a atualização do componente.
+Agora `slowlyFormatText` só funciona quando `text` muda e não interrompemos a atualização do componente.
 
 > Às vezes, precisamos de uma props onde todas as atualizações sejam ignoradas, por exemplo, um seletor de cores onde precisamos da opção de definir uma cor inicialmente escolhida, mas quando o usuário escolher uma cor, não queremos que uma atualização substitua a escolha do usuário. Nesse caso, não há problema em copiar a props do state, mas para indicar esse comportamento ao usuário, a maioria dos desenvolvedores prefixa o props com initial ou default ( initialColor/ defaultColor).
-
 
 ### <a id="jsx-returns">Retornando JSX de funções</a>
 
@@ -253,9 +253,9 @@ function Component() {
 }
 ```
 
-Quando o botão é clicado, definimos ```isLoading``` como verdadeiro e fazemos uma solicitação da api. Se a solicitação for bem-sucedida, definimos ```isLoading``` como falso e ```isFinished``` verdadeiro e, caso contrário, definimos ```hasError``` como verdadeiro se houver um erro.
+Quando o botão é clicado, definimos `isLoading` como verdadeiro e fazemos uma solicitação da api. Se a solicitação for bem-sucedida, definimos `isLoading` como falso e `isFinished` verdadeiro e, caso contrário, definimos `hasError` como verdadeiro se houver um erro.
 
-Embora isso tecnicamente funcione bem, é difícil raciocinar sobre em que state o componente está e é mais sujeito a erros do que as alternativas. Também podemos acabar em um “state impossível”, como se acidentalmente definíssemos ambos ```isLoadinge``` e ```isFinished``` como verdadeiro ao mesmo tempo.
+Embora isso tecnicamente funcione bem, é difícil raciocinar sobre em que state o componente está e é mais sujeito a erros do que as alternativas. Também podemos acabar em um “state impossível”, como se acidentalmente definíssemos ambos `isLoadinge` e `isFinished` como verdadeiro ao mesmo tempo.
 
 A melhor maneira de lidar com isso é gerenciar o estado com um “enum”. Em outras linguagens, enums são uma maneira de definir uma variável que só pode ser definida como uma coleção predefinida de valores constantes e, embora enums não existam tecnicamente em Javascript, podemos usar uma string como enum e ainda obter muitos benefícios:
 
@@ -282,19 +282,20 @@ function Component() {
   return <button onClick={fetchSomething} />;
 }
 ```
+
 Ao fazer assim, removemos a possibilidade de estados impossíveis e tornamos muito mais fácil raciocinar sobre esse componente. Finalmente, se você estiver usando algum sistema de tipagem como o TypeScript, é ainda melhor, pois você pode especificar os estados possíveis:
 
 ```jsx
 const [state, setState] =  (useState < "idle") | "loading" | "error" | ("finished" > "idle");
 ```
 
-### <a id="many-usestate"> Muitos useState </a>
-Evite usar muitos hooks ```useState``` no mesmo componente.
+### <a id="many-usestate"> Muitos useState em um componente</a>
 
-Um componente com muitos hooks ```useState``` provavelmente está fazendo muitas coisas️ e provavelmente é um bom candidato a ser quebrado em vários componentes, mas também existem alguns casos complexos em que precisamos gerenciar algum estado complexo em um único componente.
+Evite usar muitos hooks `useState` no mesmo componente.
+
+Um componente com muitos hooks `useState` provavelmente está fazendo muitas coisas️ e provavelmente é um bom candidato a ser quebrado em vários componentes, mas também existem alguns casos complexos em que precisamos gerenciar algum estado complexo em um único componente.
 
 Aqui está um exemplo do exeço de useState:
-
 
 ```jsx
 function AutocompleteInput() {
@@ -321,7 +322,7 @@ function AutocompleteInput() {
 }
 ```
 
-Temos uma função ```reset``` que redefine todo o estado e uma função ```selectItem``` que atualiza parte do nosso estado. Essas funções precisam usar alguns configuradores de estado de todos os nossos useStates para realizar a tarefa pretendida. Agora imagine que temos muito mais ações que precisam atualizar o state.  Ficando assim difícil manter o codigo livre de bugs a longo prazo. Nesses casos, pode ser benéfico gerenciar nosso state com um hook ```useReducer```:
+Temos uma função `reset` que redefine todo o estado e uma função `selectItem` que atualiza parte do nosso estado. Essas funções precisam usar alguns configuradores de estado de todos os nossos useStates para realizar a tarefa pretendida. Agora imagine que temos muito mais ações que precisam atualizar o state.  Ficando assim difícil manter o codigo livre de bugs a longo prazo. Nesses casos, pode ser benéfico gerenciar nosso state com um hook `useReducer`:
 
 ```jsx
 const initialState = {
@@ -359,6 +360,7 @@ function AutocompleteInput() {
   };
 }
 ```
+
 Usando um redutor, encapsulamos a lógica para gerenciar nosso state removemos a complexidade de nosso componente. Isso torna muito mais fácil entender o que está acontecendo, agora que podemos pensar sobre nosso state e nosso componente separadamente.
 
 Ambos useStatee useReducer vêm com seus prós e contras.
@@ -381,9 +383,10 @@ function Post({ id, unlisted }) {
   ...
 }
 ```
-Embora esse useEffect não seja tão grande, ele ainda faz várias coisas. Quando a props ```unlisted``` mudar, iremos buscar a postagem, mesmo que o ```id``` não tenha mudado.
 
-Para detectar erros como esse, tento descrever os useEffect que escrevo dizendo “quando \```[dependencies]``` mudar, faça isso ” para mim mesmo. Aplicando isso ao efeito acima, obtemos “quando ```id``` ou ```unlisted``` mudar, busque a postagem e atualize a visibilidade”. Se esta frase contiver as palavras "ou" ou "e", geralmente indica um problema.
+Embora esse useEffect não seja tão grande, ele ainda faz várias coisas. Quando a props `unlisted` mudar, iremos buscar a postagem, mesmo que o `id` não tenha mudado.
+
+Para detectar erros como esse, tento descrever os useEffect que escrevo dizendo “quando `\[dependencies]`mudar, faça isso ” para mim mesmo. Aplicando isso ao efeito acima, obtemos “quando`id`ou`unlisted` mudar, busque a postagem e atualize a visibilidade”. Se esta frase contiver as palavras "ou" ou "e", geralmente indica um problema.
 
 Dividindo esse useEffect em dois, temos:
 
@@ -402,6 +405,7 @@ function Post({ id, unlisted }) {
   ...
 }
 ```
+
 Ao fazer isso, reduzimos a complexidade de nosso componente, tornamos mais fácil raciocinar e diminuímos o risco de criarmos bugs.
 
 ## Considerações
@@ -412,3 +416,4 @@ Tem algum feedback sobre por que estou errado sobre isso? Sugestões para outros
 
 Adaptado de [React component code smells](https://antongunnarsson.com/react-component-code-smells/)
 
+![Thats all folks](assets/img/giphy-1-.gif "Thats all folks")
