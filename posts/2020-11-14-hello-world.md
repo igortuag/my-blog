@@ -4,7 +4,7 @@ title: Hello world
 description: Primeiro post oficial do blog
 category: misc
 background: "#7AAB13"
-imagePost: "/assets/img/let-the-games-begin.gif"
+image: /assets/img/let-the-games-begin.gif
 ---
 
 ## A ideia
