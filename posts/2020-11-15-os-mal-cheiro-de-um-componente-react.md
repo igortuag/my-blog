@@ -14,7 +14,7 @@ Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil
 
 ### Os cheiros 💩
 
-* [Muitas propriedades](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#too-many-props)
+* [Muitas propriedades](#too-many-props)
 * [Propriedades incompatíveis](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#incompatible-props)
 * [Copiando propriedades direto do estado global](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#props-in-state)
 * [Retornar JSX direto da funções](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#jsx-returns)
