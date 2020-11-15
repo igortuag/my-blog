@@ -9,29 +9,26 @@ import Comments from "../components/Comments"
 import * as S from "../components/Post/styled"
 
 const BlogPost = ({ data, pageContext }) => {
-  const post = data.markdownRemark
+  const { title, description, date, image } = data.markdownRemark.frontmatter
+  const { timeToRead, html, fields } = data.markdownRemark
   const next = pageContext.nextPost
   const previous = pageContext.previousPost
 
   return (
     <Layout>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        imagePost={post.frontmatter.imagePost}
-      />
+      <SEO title={title} description={description} image={image} />
       <S.PostHeader>
         <S.PostDate>
-          {post.frontmatter.date} • {post.timeToRead} min de leitura
+          {date} • {timeToRead} min de leitura
         </S.PostDate>
-        <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
-        <S.PostDescription>{post.frontmatter.description}</S.PostDescription>
+        <S.PostTitle>{title}</S.PostTitle>
+        <S.PostDescription>{description}</S.PostDescription>
       </S.PostHeader>
       <S.MainContent>
-        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </S.MainContent>
       <RecommendedPosts next={next} previous={previous} />
-      <Comments url={post.fields.slug} title={post.frontmatter.title} />
+      <Comments url={fields.slug} title={title} />
     </Layout>
   )
 }
@@ -46,9 +43,7 @@ export const query = graphql`
         title
         description
         date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
-        imagePost {
-          relativePath
-        }
+        image
       }
       html
       timeToRead

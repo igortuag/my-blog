@@ -2,7 +2,7 @@
 title: Escreva CSS BEM
 description: Uma ótima forma de escrever css
 date: 2020-11-14 03:20:18
-imagePost: assets/img/css-problems.gif
+image: assets/img/css-problems.gif
 category: css
 background: "#2DA0C3"
 ---
