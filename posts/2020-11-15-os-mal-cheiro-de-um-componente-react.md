@@ -20,7 +20,7 @@ Dito isso, gostaria de abordar aspectos que podem tornar seu componente difícil
 * [Retornar JSX direto da funções](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#jsx-returns)
 * [Vários booleanos no estado global](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#multiple-booleans)
 * [Muitos useState em um componente](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#many-usestate)
-* [Grandes useEffect](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#large-useeffect)
+* [useEffect muito longos](http://igortuag.com/os-mal-cheiro-de-um-componente-react/#large-useeffect)
 
 ## <a id="incompatible-props"> Muitas propriedades </a>
 
@@ -170,15 +170,16 @@ function Button({ text }) {
 
 Agora ```slowlyFormatText``` só funciona quando ```text``` muda e não interrompemos a atualização do componente.
 
-Às vezes, precisamos de um acessório onde todas as atualizações sejam ignoradas, por exemplo, um seletor de cores onde precisamos da opção de definir uma cor inicialmente escolhida, mas quando o usuário escolheu uma cor, não queremos que uma atualização substitua a escolha do usuário. Nesse caso, não há problema em copiar o prop no estado, mas para indicar esse comportamento ao usuário, a maioria dos desenvolvedores prefixa o prop com inicial ou padrão ( initialColor/ defaultColor).
+> Às vezes, precisamos de uma props onde todas as atualizações sejam ignoradas, por exemplo, um seletor de cores onde precisamos da opção de definir uma cor inicialmente escolhida, mas quando o usuário escolher uma cor, não queremos que uma atualização substitua a escolha do usuário. Nesse caso, não há problema em copiar a props do state, mas para indicar esse comportamento ao usuário, a maioria dos desenvolvedores prefixa o props com initial ou default ( initialColor/ defaultColor).
 
-Leitura adicional: Escrevendo componentes resilientes, de Dan Abramov .
 
-Retornando JSX de funções
+### <a id="#jsx-returns">Retornando JSX de funções</a>
+
 Não retorne JSX de funções dentro de um componente.
 
 Este é um padrão que desapareceu amplamente quando os componentes de função se tornaram mais populares, mas ainda o encontro de vez em quando. Só para dar um exemplo do que quero dizer:
 
+```jsx
 function Component() {
   const topSection = () => {
     return (
@@ -212,88 +213,95 @@ function Component() {
     </div>
   )
 }
-Embora possa parecer bom no início, torna mais difícil raciocinar sobre o código, desencoraja bons padrões e deve ser evitado. Para resolvê-lo ou eu inline JSX porque um grande retorno não é assim tão grande de um problema, mas mais frequentemente esta é uma razão para quebrar essas seções em componentes separados vez.
+```
+
+Embora possa parecer bom de início, torna mais difícil raciocinar sobre o código, desencoraja bons padrões e deve ser evitado. Para resolvê-lo use é melhor usar JSX inline, mesmo que o retorno fique grande, mas denovo: esta é uma razão para quebrar esse componente em menores.
 
 Lembre-se de que, só porque você criou um novo componente, você não precisa movê-lo para um novo arquivo também. Às vezes, faz sentido manter vários componentes no mesmo arquivo se eles estiverem fortemente acoplados.
 
-Vários booleanos por estado
-Evite usar vários booleanos para representar o estado de um componente.
+### <a id="#multiple-booleans"> Vários booleanos no state </a>
 
-Ao escrever um componente e, subsequentemente, estender a funcionalidade do componente, é fácil acabar em uma situação onde você tem vários booleanos para indicar em qual estado o componente está. tem algo assim:
+Evite usar vários booleanos para representar o state de um componente.
 
+Ao escrever um componente e, subsequentemente, estender suas funcionalidade, é fácil acabar em uma situação onde você tem vários booleanos para indicar em qual estado o componente está. Exemplo:
+
+```jsx
 function Component() {
-  const \[isLoading, setIsLoading] = useState(false)
-  const \[isFinished, setIsFinished] = useState(false)
-  const \[hasError, setHasError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const fetchSomething = () => {
-    setIsLoading(true)
+    setIsLoading(true);
 
-```
-fetch(url)
-  .then(() => {
-    setIsLoading(false)
-    setIsFinished(true)
-  })
-  .catch(() => {
-    setHasError(true)
-  })
-```
+    fetch(url)
+      .then(() => {
+        setIsLoading(false);
+        setIsFinished(true);
+      })
+      .catch(() => {
+        setHasError(true);
+      });
+  };
 
-  }
+  if (isLoading) return <Loader />;
+  if (hasError) return <Error />;
+  if (isFinished) return <Success />;
 
-  if (isLoading) return <Loader />
-  if (hasError) return <Error />
-  if (isFinished) return <Success />
-
-  return <button onClick={fetchSomething} />
+  return <button onClick={fetchSomething} />;
 }
-Quando o botão é clicado, definimos isLoadingcomo verdadeiro e fazemos uma solicitação da web com fetch. Se a solicitação for bem-sucedida, definimos isLoadingcomo falso e isFinishedverdadeiro e, caso contrário, definimos hasErrorcomo verdadeiro se houver um erro.
+```
 
-Embora isso tecnicamente funcione bem, é difícil raciocinar sobre em que estado o componente está e é mais sujeito a erros do que as alternativas. Também podemos acabar em um “estado impossível”, como se acidentalmente definíssemos ambos isLoadinge isFinishedcomo verdadeiro ao mesmo tempo.
+Quando o botão é clicado, definimos ```isLoading``` como verdadeiro e fazemos uma solicitação da api. Se a solicitação for bem-sucedida, definimos ```isLoading``` como falso e ```isFinished``` verdadeiro e, caso contrário, definimos ```hasError``` como verdadeiro se houver um erro.
+
+Embora isso tecnicamente funcione bem, é difícil raciocinar sobre em que state o componente está e é mais sujeito a erros do que as alternativas. Também podemos acabar em um “state impossível”, como se acidentalmente definíssemos ambos ```isLoadinge``` e ```isFinished``` como verdadeiro ao mesmo tempo.
 
 A melhor maneira de lidar com isso é gerenciar o estado com um “enum”. Em outras linguagens, enums são uma maneira de definir uma variável que só pode ser definida como uma coleção predefinida de valores constantes e, embora enums não existam tecnicamente em Javascript, podemos usar uma string como enum e ainda obter muitos benefícios:
 
+```jsx
 function Component() {
-  const \[state, setState] = useState('idle')
+  const [state, setState] = useState("idle");
 
   const fetchSomething = () => {
-    setState('loading')
+    setState("loading");
 
-```
-fetch(url)
-  .then(() => {
-    setState('finished')
-  })
-  .catch(() => {
-    setState('error')
-  })
-```
+    fetch(url)
+      .then(() => {
+        setState("finished");
+      })
+      .catch(() => {
+        setState("error");
+      });
+  };
 
-  }
+  if (state === "loading") return <Loader />;
+  if (state === "error") return <Error />;
+  if (state === "finished") return <Success />;
 
-  if (state === 'loading') return <Loader />
-  if (state === 'error') return <Error />
-  if (state === 'finished') return <Success />
-
-  return <button onClick={fetchSomething} />
+  return <button onClick={fetchSomething} />;
 }
-Ao fazer isso dessa maneira, removemos a possibilidade de estados impossíveis e tornamos muito mais fácil raciocinar sobre esse componente. Finalmente, se você estiver usando algum tipo de sistema de tipos como o TypeScript, é ainda melhor, pois você pode especificar os estados possíveis:
+```
+Ao fazer assim, removemos a possibilidade de estados impossíveis e tornamos muito mais fácil raciocinar sobre esse componente. Finalmente, se você estiver usando algum sistema de tipagem como o TypeScript, é ainda melhor, pois você pode especificar os estados possíveis:
 
-const \[state, setState] = useState<'idle' | 'loading' | 'error' | 'finished'>('idle')
-Muitos useState
-Evite usar muitos useStateganchos no mesmo componente.
+```jsx
+const [state, setState] =  (useState < "idle") | "loading" | "error" | ("finished" > "idle");
+```
 
-Um componente com muitos useStateganchos provavelmente está fazendo Too Many Things ™ ️ e provavelmente é um bom candidato para quebrar em vários componentes, mas também existem alguns casos complexos em que precisamos gerenciar algum estado complexo em um único componente.
+### <a id="#many-usestate"> Muitos useState </a>
+Evite usar muitos hooks ```useState``` no mesmo componente.
 
-Aqui está um exemplo de como alguns estados e algumas funções em um componente de entrada de preenchimento automático podem ser semelhantes a:
+Um componente com muitos hooks ```useState``` provavelmente está fazendo muitas coisas️ e provavelmente é um bom candidato a ser quebrado em vários componentes, mas também existem alguns casos complexos em que precisamos gerenciar algum estado complexo em um único componente.
 
+Aqui está um exemplo do exeço de useState:
+
+
+```jsx
 function AutocompleteInput() {
-  const \[isOpen, setIsOpen] = useState(false)
-  const \[inputValue, setInputValue] = useState('')
-  const \[items, setItems] = useState(\[])
-  const \[selectedItem, setSelectedItem] = useState(null)
-  const \[activeIndex, setActiveIndex] = useState(-1)
+  const [isOpen, setIsOpen] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const [items, setItems] = useState(\[])
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(-1)
 
   const reset = () => {
     setIsOpen(false)
@@ -309,69 +317,69 @@ function AutocompleteInput() {
     setSelectedItem(item)
   }
 
-  ...
 }
-Temos uma resetfunção que redefine todo o estado e uma selectItemfunção que atualiza parte do nosso estado. Essas funções precisam usar alguns configuradores de estado de todos os nossos useStates para realizar a tarefa pretendida. Agora imagine que temos muito mais ações que precisam atualizar o estado e é fácil ver que isso se torna difícil de manter livre de bugs a longo prazo. Nesses casos, pode ser benéfico gerenciar nosso estado com um useReducergancho:
+```
 
+Temos uma função ```reset``` que redefine todo o estado e uma função ```selectItem``` que atualiza parte do nosso estado. Essas funções precisam usar alguns configuradores de estado de todos os nossos useStates para realizar a tarefa pretendida. Agora imagine que temos muito mais ações que precisam atualizar o state.  Ficando assim difícil manter o codigo livre de bugs a longo prazo. Nesses casos, pode ser benéfico gerenciar nosso state com um hook ```useReducer```:
+
+```jsx
 const initialState = {
   isOpen: false,
   inputValue: "",
-  items: \[],
+  items: [],
   selectedItem: null,
-  activeIndex: -1
-}
+  activeIndex: -1,
+};
 function reducer(state, action) {
   switch (action.type) {
     case "reset":
       return {
-        ...initialState
-      }
+        ...initialState,
+      };
     case "selectItem":
       return {
         ...state,
-        selectedItem: action.payload
-      }
+        selectedItem: action.payload,
+      };
     default:
-      throw Error()
+      throw Error();
   }
 }
 
 function AutocompleteInput() {
-  const \[state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const reset = () => {
-    dispatch({ type: 'reset' })
-  }
+    dispatch({ type: "reset" });
+  };
 
   const selectItem = (item) => {
-    dispatch({ type: 'reset', payload: item })
-  }
-
-  ...
+    dispatch({ type: "reset", payload: item });
+  };
 }
-Usando um redutor, encapsulamos a lógica para gerenciar nosso estado e removemos a complexidade de nosso componente. Isso torna muito mais fácil entender o que está acontecendo, agora que podemos pensar sobre nosso estado e nosso componente separadamente.
+```
+Usando um redutor, encapsulamos a lógica para gerenciar nosso state removemos a complexidade de nosso componente. Isso torna muito mais fácil entender o que está acontecendo, agora que podemos pensar sobre nosso state e nosso componente separadamente.
 
-Ambos useStatee useReducervêm com seus prós, contras e diferentes casos de uso (trocadilho intencional). Um dos meus favoritos com redutores é o padrão de redutor de estado de Kent C. Dodds .
+Ambos useStatee useReducer vêm com seus prós e contras.
 
-Large useEffect
-Evite programas grandes useEffectque fazem várias coisas. Eles tornam seu código sujeito a erros e mais difícil de raciocinar.
+### <a id="#large-useeffect"> useEffect muito longos </a>
 
-Um erro que cometi muito quando os ganchos foram lançados foi colocar muitas coisas em um single useEffect. Para ilustrar, aqui está um componente com um único useEffect:
+Evite escrever useEffectque muito longos. Eles tornam seu código sujeito a erros além de ser mais difícil raciocinar.
 
+Um erro comum é muitas coisas em apenas um useEffect. Para ilustrar, aqui está um componente com um único useEffect:
+
+```jsx
 function Post({ id, unlisted }) {
   ...
-
   useEffect(() => {
-    fetch(`/posts/${id}`).then(/ *do something* /)
+    fetch(`/posts/${id}`).then(/ *do something* /);
 
-```
-setVisibility(unlisted)
-```
-
-  }, \[id, unlisted])
-
+    setVisibility(unlisted);
+  }, \[(id, unlisted)]);
+}
   ...
 }
+```
 Embora esse efeito não seja tão grande, ele ainda faz várias coisas. Quando a unlistedprop mudar, iremos buscar a postagem, mesmo que idnão tenha mudado.
 
 Para detectar erros como esse, tento descrever os efeitos que escrevo dizendo “quando \[dependencies]mudar, faça isso ” para mim mesmo. Aplicando isso ao efeito acima, obtemos “quando id ou unlisted mudanças, busque a postagem e atualize a visibilidade”. Se esta frase contiver as palavras ” ou ” ou ” e ”, geralmente indica um problema.
