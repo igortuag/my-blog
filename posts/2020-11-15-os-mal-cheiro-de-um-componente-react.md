@@ -380,33 +380,33 @@ function Post({ id, unlisted }) {
   ...
 }
 ```
-Embora esse efeito não seja tão grande, ele ainda faz várias coisas. Quando a unlistedprop mudar, iremos buscar a postagem, mesmo que idnão tenha mudado.
+Embora esse useEffect não seja tão grande, ele ainda faz várias coisas. Quando a props ```unlisted``` mudar, iremos buscar a postagem, mesmo que o ```id``` não tenha mudado.
 
-Para detectar erros como esse, tento descrever os efeitos que escrevo dizendo “quando \[dependencies]mudar, faça isso ” para mim mesmo. Aplicando isso ao efeito acima, obtemos “quando id ou unlisted mudanças, busque a postagem e atualize a visibilidade”. Se esta frase contiver as palavras ” ou ” ou ” e ”, geralmente indica um problema.
+Para detectar erros como esse, tento descrever os useEffect que escrevo dizendo “quando \```[dependencies]``` mudar, faça isso ” para mim mesmo. Aplicando isso ao efeito acima, obtemos “quando ```id``` ou ```unlisted``` mudar, busque a postagem e atualize a visibilidade”. Se esta frase contiver as palavras "ou" ou "e", geralmente indica um problema.
 
-Dividindo esse efeito em dois efeitos:
+Dividindo esse useEffect em dois, temos:
 
+```jsx
 function Post({ id, unlisted }) {
   ...
 
   useEffect(() => { // when id changes fetch the post
-    fetch(`/posts/${id}`).then(/ *...* /)
-  }, \[id])
+    fetch(`/posts/${id}`).then(/* ... */)
+  }, [id])
 
   useEffect(() => { // when unlisted changes update visibility
     setVisibility(unlisted)
-  }, \[unlisted])
+  }, [unlisted])
 
   ...
 }
-Ao fazer isso, reduzimos a complexidade de nosso componente, tornamos mais fácil raciocinar e diminuímos o risco de criar bugs.
+```
+Ao fazer isso, reduzimos a complexidade de nosso componente, tornamos mais fácil raciocinar e diminuímos o risco de criarmos bugs.
 
-Empacotando
-Tudo bem, isso é tudo por agora! Lembre-se de que, de forma alguma, essas não são regras, mas sinais de que algo pode estar “errado”. Você certamente se deparará com situações em que deseja fazer algumas das coisas acima por um bom motivo.
+## Considerações
 
-Tem algum feedback sobre por que estou errado sobre isso? Sugestões para outros odores de código que você encontrou em seus componentes? Fale comigo no Twitter !
+Tudo bem, isso é tudo por agora! Lembre-se de que, de forma alguma, essas não são regras, mas sinais de que algo pode estar "errado". Você certamente se deparará com situações em que deseja fazer algumas das coisas acima por um bom motivo.
 
-Emblema DEV.to
-Discuta no DEV
+Tem algum feedback sobre por que estou errado sobre isso? Sugestões para outros odores de código que você encontrou em seus componentes? Entre em contato!
 
 Adaptado de [React component code smells](https://antongunnarsson.com/react-component-code-smells/)
