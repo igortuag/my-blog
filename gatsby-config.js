@@ -8,7 +8,7 @@ module.exports = {
     description: `Um blog sobre o mundo do desenvolvimento de softwares: frontend, mobile, desktop e as opiniões e experiências de Igor Tuag.`,
     position: `Frontend Developer`,
     author: `@igortuag`,
-    siteUrl: `https://igortuag.com`,
+    siteUrl: `https://igortuag.com/`,
   },
   plugins: [
     `gatsby-plugin-transition-link`,
