@@ -5,7 +5,7 @@ const queries = require("./src/utils/algolia_queries")
 module.exports = {
   siteMetadata: {
     title: `Igor Tuag`,
-    description: `Desenvolvedor na Uppersoft e nas horas vagas, escrevo sobre frontend, minhas experiências e outras coisas mais.`,
+    description: `Um blog sobre o mundo do desenvolvimento de softwares: frontend, mobile, desktop e as opiniões e experiências de Igor Tuag.`,
     position: `Frontend Developer`,
     author: `@igortuag`,
     siteUrl: `https://igortuag.com`,
@@ -88,5 +88,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        head: false,
+      },
+    },
   ],
 }
