@@ -29,6 +29,7 @@ function SEO({ description, lang, meta, title, imagePost }) {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
+  
   const url = site.siteMetadata.siteUrl
   const image = imagePost && imagePost.relativePath ? imagePost.relativePath : "cover.png"
   const ogImage = `${url}/assets/img/${image}`

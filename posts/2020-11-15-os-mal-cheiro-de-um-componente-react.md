@@ -2,7 +2,7 @@
 title: Os mal cheiros de um componente react
 description: Uma lista de características ruins para um componente react ter.
 date: 2020-11-15 10:55:37
-thumbnail: assets/img/dog-bad-smell.png
+imagePost: assets/img/dog-bad-smell.png
 category: react
 background: "#00d8ff"
 ---
