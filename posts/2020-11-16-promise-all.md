@@ -6,13 +6,13 @@ image: assets/img/1_3kqej4rwyrhek783d2kosg.jpeg
 category: js
 background: "#D6BA32"
 ---
-*Antes de começar: este não é um tutorial completo sobre Promise.All. Este post é apenas uma introdução sobre como usar o Promise.all.*
+*Antes de começar: este não é um tutorial completo sobre Promise.All. Este post é apenas uma introdução sobre como usá-lo.*
 
 ## Promises antes - "callback hell"
 
-Desde o ES8, os desenvolvedores JavaScript provavelmente estão gostando das novas palavras `async` e `await`. Frequentemente chamando de `async/await`, com essas dois métodos resolvemos um problema em JavaScript: o chamado "callback hell".
+Desde o ES8, os desenvolvedores JavaScript provavelmente estão gostando das novas palavras `async` e `await`. Frequentemente chamado de `async/await`, com esses dois métodos resolvemos um problema em JavaScript: o chamado "callback hell".
 
-Antes do ES8, as funções assíncrona usavam callbacks. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
+Antes do ES8, as funções assíncronas usavam callbacks. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
 
 Exemplo:
 
@@ -44,13 +44,13 @@ async function main() {
 }
 ```
 
-Vê como isso se parece mais com código síncrono? Belos passos bem definidos que e fáceis de entender.
+Vê como isso se parece mais com código síncrono? Belos passos bem definidos que são fáceis de entender.
 
 E é geralmente aí que os tutoriais deste tópico terminam. No entanto, gostaria de explicar por que você pode querer ir mais longe e refatorar este código.
 
 Semelhante ao primeiro caso, o código espera duas vezes. Uma vez para obter `result1` e novamente para obter `result2`.
 
-Você começa a ter problemas quando percebe que não precisa esperar por uma informação, para dai obter a outra. Elas podem ser obtidas *em paralelo*. E para resolver este problema que surgiu o Promise.all
+Você começa a ter problemas quando percebe que não precisa esperar por uma informação, para daí obter a outra. Elas podem ser obtidas *em paralelo*. É para resolver este problema que surgiu o Promise.all
 
 ## Promise.all
 
@@ -75,7 +75,7 @@ A partir daí, podemos usar as duas variáveis ​​na chamada final.
 
 O que fizemos essencialmente foi cortar nosso tempo de espera pela metade. Em vez de esperar por 2 métodos de x que levam um segundo cada, resultando em duas etapas, obtemos elas em paralelo. Agora a execução do código passa a ter um segundo. É uma grande economia de tempo para você e seu usuário.
 
-Obs: realmente, o método Promise.all não está sendo executado em paralelo. Ela está *aguardando uma lista para terminar*. A diferença é que a chamada para `doSomethingAsync` provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações de longas, de duração igual, terminarem em uma ordem indeterminística.
+Obs: realmente, o método Promise.all não está sendo executado em paralelo. Ela está *aguardando uma lista para terminar*. A diferença é que a chamada para `doSomethingAsync` provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações longas, de duração igual, terminarem em uma ordem indeterminística.
 
 Portanto: **se você tem um código que precisa fazer uma série de chamadas assíncronas - pense consigo mesmo - qualquer uma delas pode ser feita em paralelo?** No exemplo acima, fizemos dois dos três em paralelo porque o terceiro precisava dos resultados dos dois primeiros. No entanto, o segundo não precisava do resultado do primeiro, então poderia ser feito ao mesmo tempo.
 
@@ -101,7 +101,7 @@ async function main2() {
 }
 ```
 
-Aqui, na verdade estamos esperando que o loop anterior do `for..of `termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await` paralelamente
+Aqui, na verdade estamos esperando que o loop anterior do `for..of `termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e executadas paralelamente.
 
 ```javascript
 const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
@@ -114,12 +114,12 @@ const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
 }
 ```
 
-Aqui, usamos `Array.map` para criar uma série de promises, em seguida, usamos `await` para cada promises com Promise.all novamente.
+Aqui, usamos `Array.map` para criar uma série de promises. Em seguida, usamos `await` para cada promise com Promise.all novamente.
 
 Mais uma vez, se `doSomethingAsync` levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
 
 ## Considerações finais
 
-Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. O bom uso de `.maps` e `Promises` irá lhe ajudar muito no desenvolvimento de JavaScript. Todos os itens acima se aplicam também ao TypeScript, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
+Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. O bom uso de `.maps` e `Promises` irá lhe ajudar muito no desenvolvimento de JavaScript. Todos os itens acima se aplicam também ao TypeScript. Não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa... Este é um problema de JavaScript básico com uma solução de JavaScript básico.
 
 Fontes: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall), [MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [ECMA](https://www.ecma-international.org/ecma-262/10.0/index.html#sec-promise.all)
