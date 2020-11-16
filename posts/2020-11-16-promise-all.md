@@ -75,7 +75,7 @@ A partir daí, podemos usar as duas variáveis ​​na chamada final.
 
 O que fizemos essencialmente foi cortar nosso tempo de espera pela metade. Em vez de esperar por 2 métodos de x que levam um segundo cada, resultando em duas etapas, obtemos elas em paralelo. Agora a execução do código passa a ter um segundo. É uma grande economia de tempo para você e seu usuário.
 
-Obs: realmente, o método Promise.all não está sendo executado em paralelo. Ela está *aguardando uma lista para terminar*. A diferença é que a chamada para `doSomethingAsync` provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações de longas, de duração igual, terminarem em uma ordem indeterminística.
+Obs: realmente, o método Promise.all não está sendo executado em paralelo. Ela está *aguardando uma lista para terminar*. A diferença é que a chamada para `doSomethingAsync` provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações longas, de duração igual, terminarem em uma ordem indeterminística.
 
 Portanto: **se você tem um código que precisa fazer uma série de chamadas assíncronas - pense consigo mesmo - qualquer uma delas pode ser feita em paralelo?** No exemplo acima, fizemos dois dos três em paralelo porque o terceiro precisava dos resultados dos dois primeiros. No entanto, o segundo não precisava do resultado do primeiro, então poderia ser feito ao mesmo tempo.
 
@@ -101,7 +101,7 @@ async function main2() {
 }
 ```
 
-Aqui, na verdade estamos esperando que o loop anterior do `for..of`termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await` paralelamente
+Aqui, na verdade estamos esperando que o loop anterior do `for..of `termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e executadas paralelamente.
 
 ```javascript
 const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
