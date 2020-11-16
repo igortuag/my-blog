@@ -5,6 +5,20 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8NX2EX51M5"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8NX2EX51M5');
+        `,
+          }}
+        />
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
@@ -14,7 +28,7 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes} className="dark">
-      <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             (function() {
