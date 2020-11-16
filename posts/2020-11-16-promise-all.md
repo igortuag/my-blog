@@ -48,7 +48,7 @@ Vê como isso se parece mais com código síncrono? Belos passos bem definidos 
 
 E é geralmente aí que os tutoriais deste tópico terminam. No entanto, gostaria de explicar por que você pode querer ir mais longe e refatorar este código.
 
-Semelhante ao primeiro caso, o código espera duas vezes. Uma vez para obter ```result1``` e novamente para obter ```result2```. Eles são usados ​​juntos para fazer a etapa final.
+Semelhante ao primeiro caso, o código espera duas vezes. Uma vez para obter `result1` e novamente para obter `result2`. Eles são usados ​​juntos para fazer a etapa final.
 
 Você começa a ter problemas quando percebe que não precisa esperar por uma informação para dai obter a outra *em sequência*. Elas podem ser obtidas *em paralelo*. E para resolver este problema que vem o Promise.all
 
@@ -75,7 +75,7 @@ A partir daí, podemos usar as duas variáveis ​​na chamada final.
 
 O que fizemos essencialmente foi cortar nosso tempo de espera pela metade. Em vez de esperar por 2 métodos de x que levam um segundo cada, resultando em duas etapas da segunda série. Obtemos elas em paralelo e agora demoram cerca de um segundo. É uma grande economia de tempo para você e seu usuário.
 
-Agora, uma sutileza aqui: realmente, a definição de Promise.all não está sendo executada em paralelo. Ela está *aguardando uma lista para terminar* . A diferença é que a chamada para ```doSomethingAsync``` provavelmente iniciou alguns ciclos de clock antes de ```doSomethingElseAsync```. Normalmente essa diferença não importa, mas espere ver as operações de longas de duração igual terminarem em uma ordem indeterminística.
+Agora, uma sutileza aqui: realmente, a definição de Promise.all não está sendo executada em paralelo. Ela está *aguardando uma lista para terminar* . A diferença é que a chamada para `doSomethingAsync` provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações de longas de duração igual terminarem em uma ordem indeterminística.
 
 Portanto: **se você tem um código que precisa fazer uma série de chamadas assíncronas - pense consigo mesmo - qualquer uma delas pode ser feita em paralelo?** No exemplo acima, fizemos dois dos três em paralelo porque o terceiro precisava dos resultados dos dois primeiros. No entanto, o segundo não precisava do resultado do primeiro, então poderia ser feito ao mesmo tempo.
 
@@ -83,7 +83,7 @@ Portanto: **se você tem um código que precisa fazer uma série de chamadas as
 
 Isso é realmente útil quando você está mapeando uma lista de, digamos, usuários e atualizando um registro deles.
 
-Frequentemente, programadores inexperientes evitarão ```map``` e optarão por um padrão for ... of. Talvez o loop costumava ser síncrono e agora tem algum código assíncrono. De qualquer maneira, isso acontece. No entanto, quando os loops são combinados com async await, isso pode causar alguns códigos muito lentos.
+Frequentemente, programadores inexperientes evitarão `map` e optarão por um padrão for ... of. Talvez o loop costumava ser síncrono e agora tem algum código assíncrono. De qualquer maneira, isso acontece. No entanto, quando os loops são combinados com async await, isso pode causar alguns códigos muito lentos.
 
 ```javascript
 
@@ -107,13 +107,14 @@ async function main2() {
 }
 ```
 
-Aqui, usamos ```Array.map``` para criar uma série de promises, em seguida, usamos ```await``` para cada promises com Promise.all novamente.
+Aqui, usamos `Array.map` para criar uma série de promises, em seguida, usamos `await` para cada promises com Promise.all novamente.
 
-Mais uma vez, se ```doSomethingAsync``` levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
+Mais uma vez, se `doSomethingAsync` levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
 
 ## Considerações finais
 
-Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. Um bom controle ```.map``` e ```Promises``` irá atendê-lo bem no desenvolvimento de JavaScript. Todos os itens acima se aplicam ao TypeScript, fluxo é o mesmo, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
+Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. Um bom controle `.map` e `Promises` irá atendê-lo bem no desenvolvimento de JavaScript. Todos os itens acima se aplicam ao TypeScript, fluxo é o mesmo, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
 
 Fonte: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall)
 
+![Gif do Papaleguas](assets/img/papaleguas.gif "Gif do Papaleguas")
