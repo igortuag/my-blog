@@ -114,12 +114,12 @@ const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
 }
 ```
 
-Aqui, usamos `Array.map` para criar uma série de promises, em seguida, usamos `await` para cada promises com Promise.all novamente.
+Aqui, usamos `Array.map` para criar uma série de promises. Em seguida, usamos `await` para cada promise com Promise.all novamente.
 
 Mais uma vez, se `doSomethingAsync` levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
 
 ## Considerações finais
 
-Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. O bom uso de `.maps` e `Promises` irá lhe ajudar muito no desenvolvimento de JavaScript. Todos os itens acima se aplicam também ao TypeScript, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
+Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. O bom uso de `.maps` e `Promises` irá lhe ajudar muito no desenvolvimento de JavaScript. Todos os itens acima se aplicam também ao TypeScript. Não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa... Este é um problema de JavaScript básico com uma solução de JavaScript básico.
 
 Fontes: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall), [MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [ECMA](https://www.ecma-international.org/ecma-262/10.0/index.html#sec-promise.all)
