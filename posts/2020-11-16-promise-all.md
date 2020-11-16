@@ -12,41 +12,64 @@ background: "#D6BA32"
 
 Desde o ES8, os desenvolvedores JavaScript provavelmente estão gostando das novas palavras `async` e `await`. Frequentemente chamando de 'async/await', esse conjunto de palavras-chaves resolve um problema em JavaScript: o chamado "callback hell".
 
-Antes do ES8, as funções assíncrona tinham que aceitar retornos de chamada. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
+Antes do ES8, as funções assíncrona tinham que aceitar callbacks. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
 
-Aqui está um exemplo
+Exemplo:
 
+```javascript
+function main() {
+  return doSomethingAsync('Foo').then(result1 => {
+    return doSomethingElseAsync('Foo').then(result2 => {
+
+      // Agora que já tenho as informações, chame a etapa final
+      return finallySomethingAsync(result1, result2);
+    });
+  });
+}
 ```
 
-```
+Vê como o código muda para a direita? O famoso hadouken, não é o ideal. O exemplo tem apenas duas etapas, mas você pode imaginar um caso três, cinco ou dez etapas.
 
-Vê como o código muda para a direita? Não é o ideal. Isso tem duas etapas, mas você pode imaginar o aninhamento com três, cinco ou dez etapas. Bruto.
-
-## Promessas agora - simplesmente adorável
+## Promises agora - simplesmente adorável
 
 Com o surgimento de Async / Await, o mesmo código poderia ser expresso de maneira muito mais agradável.
 
+```javascript
+async function main() {
+  const result1 = await doSomethingAsync('Foo');
+  const result2 = await doSomethingElseAsync('Foo');
+
+  // Agora que já tenho as informações, chame a etapa final
+  return await finallySomethingAsync(result1, result2);
+}
 ```
 
-```
+Vê como isso se parece mais com código síncrono? Belos passos bem definidos que são fáceis de entender.
 
-Vê como isso se parece mais com código síncrono? Belos passos definidos que são fáceis de seguir.
+E é geralmente aí que os tutoriais deste tópico terminam. No entanto, gostaria de explicar por que você pode querer ir mais longe e refatorar este código.
 
-E é geralmente aí que os tutoriais deste tópico terminam. No entanto, gostaria de explicar por que você pode querer ir mais longe ao converter este código.
+Semelhante ao primeiro caso, o código espera duas vezes. Uma vez para obter ```result1``` e novamente para obter ```result2```. Eles são usados ​​juntos para fazer a etapa final.
 
-Semelhante ao primeiro snippet, o código espera duas vezes. Uma vez para obter `result1`e novamente para obter `result2`. Eles são usados ​​juntos para fazer a etapa final.
-
-Você começa a ter problemas quando percebe que não precisa esperar por essas coisas *em sequência* . Eles podem acontecer *em paralelo* .
+Você começa a ter problemas quando percebe que não precisa esperar por uma informação para dai obter a outra *em sequência*. Elas podem ser obtidas *em paralelo*. E para resolver este problema que vem o Promise.all
 
 ## Promise.all
 
-Então, nós apresentamos `Promise.all`. Promise.all espera por uma série de promessas serem resolvidas antes de continuar. Portanto, se alterarmos nosso código para usar Promise.all em vez disso, ficaria assim:
+Promise.all espera por uma série de promessas serem resolvidas antes de continuar. Portanto, se alterarmos nosso código para usar Promise.all, ficaria assim:
 
+```javascript
+async function main() {
+  console.log('This is my code');
+  const [result1, result2] = await Promise.all([
+    doSomethingAsync('Foo'),
+    doSomethingElseAsync('Foo'),
+  ]);
+
+  // Agora que já tenho as informações, chame a etapa final
+  return await finallySomethingAsync(result1, result2);
+}
 ```
 
-```
-
-Percorrendo, declaramos as variáveis ​​de resultado usando [atribuição de desestruturação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) e, em seguida, aguardamos a chamada para Promise.all.
+Podendo ainda obter os resultados de forma direta usando [Atribuição via desestruturação (destructuring assignment)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao), aguardamos a chamada para Promise.all.
 
 A partir daí, podemos usar as duas variáveis ​​na chamada final.
 
@@ -62,13 +85,13 @@ Isso é realmente útil quando você está mapeando uma lista de, digamos, usuá
 
 Freqüentemente, programadores inexperientes evitarão `map`e optarão por um padrão for ... of. Talvez o loop costumava ser síncrono e agora tem algum código assíncrono. De qualquer maneira, isso acontece. No entanto, quando os loops são combinados com async await, isso pode causar alguns códigos muito lentos.
 
-```
+```javascript
 
 ```
 
 Aqui, na verdade estamos esperando que o loop anterior do `for..of`loop termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await`paralelamente
 
-```
+```javascript
 
 ```
 
@@ -82,4 +105,4 @@ Escrever código como este torna menos fácil de seguir - é definitivamente men
 
 Flex final: reescrevi um trabalho de nó recentemente, e usando Promise.all passou de cerca de 6 segundos para cerca de 2. Vale a pena fazer.
 
-<!--EndFragment-->
+Fonte: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall)
