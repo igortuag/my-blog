@@ -73,17 +73,17 @@ Podendo ainda obter os resultados de forma direta usando [Atribuição via dese
 
 A partir daí, podemos usar as duas variáveis ​​na chamada final.
 
-O que fizemos essencialmente foi cortar nosso tempo de espera pela metade. Em vez de esperar por 2 métodos de x que levam um segundo cada, resultando em duas etapas da segunda série. Fizemos neles em paralelo e agora demoram cerca de um segundo. É uma grande economia de tempo para você e seu usuário.
+O que fizemos essencialmente foi cortar nosso tempo de espera pela metade. Em vez de esperar por 2 métodos de x que levam um segundo cada, resultando em duas etapas da segunda série. Obtemos elas em paralelo e agora demoram cerca de um segundo. É uma grande economia de tempo para você e seu usuário.
 
-Agora, uma sutileza aqui: realmente, a definição de Promise.all não está sendo executada em paralelo. Ele está *aguardando uma lista para terminar* . A diferença é que a chamada para `doSomethingAsync`provavelmente iniciou alguns ciclos de clock antes de `doSomethingElseAsync`. Normalmente essa diferença não importa, mas espere ver as operações de comprimento de duração igual terminarem em uma ordem indeterminística.
+Agora, uma sutileza aqui: realmente, a definição de Promise.all não está sendo executada em paralelo. Ela está *aguardando uma lista para terminar* . A diferença é que a chamada para ```doSomethingAsync``` provavelmente iniciou alguns ciclos de clock antes de ```doSomethingElseAsync```. Normalmente essa diferença não importa, mas espere ver as operações de longas de duração igual terminarem em uma ordem indeterminística.
 
 Portanto: **se você tem um código que precisa fazer uma série de chamadas assíncronas - pense consigo mesmo - qualquer uma delas pode ser feita em paralelo?** No exemplo acima, fizemos dois dos três em paralelo porque o terceiro precisava dos resultados dos dois primeiros. No entanto, o segundo não precisava do resultado do primeiro, então poderia ser feito ao mesmo tempo.
 
-## Esperando matrizes dinâmicas de promessas
+## Await em arrays de promises
 
 Isso é realmente útil quando você está mapeando uma lista de, digamos, usuários e atualizando um registro deles.
 
-Freqüentemente, programadores inexperientes evitarão `map`e optarão por um padrão for ... of. Talvez o loop costumava ser síncrono e agora tem algum código assíncrono. De qualquer maneira, isso acontece. No entanto, quando os loops são combinados com async await, isso pode causar alguns códigos muito lentos.
+Frequentemente, programadores inexperientes evitarão ```map``` e optarão por um padrão for ... of. Talvez o loop costumava ser síncrono e agora tem algum código assíncrono. De qualquer maneira, isso acontece. No entanto, quando os loops são combinados com async await, isso pode causar alguns códigos muito lentos.
 
 ```javascript
 
@@ -92,17 +92,28 @@ Freqüentemente, programadores inexperientes evitarão `map`e optarão por um p
 Aqui, na verdade estamos esperando que o loop anterior do `for..of`loop termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await`paralelamente
 
 ```javascript
+async function main2() {
+  const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
 
+  let results = [];
+
+  for await (const user of users) {
+    const result = await doSomethingAsync(user);
+
+    results.push('Hello, ' + result);
+  }
+
+  return results;
+}
 ```
 
-Aqui, usamos `Array.map`para criar uma série de promessas e, em seguida, usamos `await`essa série de promessas com Promise.all novamente.
+Aqui, usamos ```Array.map``` para criar uma série de promises, em seguida, usamos ```await``` para cada promises com Promise.all novamente.
 
-Mais uma vez, se `doSomethingAsync`levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
+Mais uma vez, se ```doSomethingAsync``` levar um segundo, o tempo sequencial será de quatro segundos para nossos quatro usuários, mas, paralelamente, provavelmente será mais próximo de um segundo. Uma grande melhoria!
 
-## Pensamentos finais
+## Considerações finais
 
-Escrever código como este torna menos fácil de seguir - é definitivamente menos sequencial, mas com o tempo fica mais fácil de ler e escrever. Um bom controle `.map`e `Promises`irá atendê-lo bem no desenvolvimento de JavaScript. Todos os itens acima se aplicam ao TypeScript, flow e é o mesmo, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
-
-Flex final: reescrevi um trabalho de nó recentemente, e usando Promise.all passou de cerca de 6 segundos para cerca de 2. Vale a pena fazer.
+Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. Um bom controle ```.map``` e ```Promises``` irá atendê-lo bem no desenvolvimento de JavaScript. Todos os itens acima se aplicam ao TypeScript, fluxo é o mesmo, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
 
 Fonte: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall)
+
