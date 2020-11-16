@@ -10,9 +10,9 @@ background: "#D6BA32"
 
 ## Promises antes - "callback hell"
 
-Desde o ES8, os desenvolvedores JavaScript provavelmente estão gostando das novas palavras `async` e `await`. Frequentemente chamando de `async/await`, com essas dois métodos resolvemos um problema em JavaScript: o chamado "callback hell".
+Desde o ES8, os desenvolvedores JavaScript provavelmente estão gostando das novas palavras `async` e `await`. Frequentemente chamado de `async/await`, com esses dois métodos resolvemos um problema em JavaScript: o chamado "callback hell".
 
-Antes do ES8, as funções assíncrona usavam callbacks. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
+Antes do ES8, as funções assíncronas usavam callbacks. Isso significava que o código ficava confuso quando você precisava realizar *várias etapas assíncronas* .
 
 Exemplo:
 
@@ -44,13 +44,13 @@ async function main() {
 }
 ```
 
-Vê como isso se parece mais com código síncrono? Belos passos bem definidos que e fáceis de entender.
+Vê como isso se parece mais com código síncrono? Belos passos bem definidos que são fáceis de entender.
 
 E é geralmente aí que os tutoriais deste tópico terminam. No entanto, gostaria de explicar por que você pode querer ir mais longe e refatorar este código.
 
 Semelhante ao primeiro caso, o código espera duas vezes. Uma vez para obter `result1` e novamente para obter `result2`.
 
-Você começa a ter problemas quando percebe que não precisa esperar por uma informação, para dai obter a outra. Elas podem ser obtidas *em paralelo*. E para resolver este problema que surgiu o Promise.all
+Você começa a ter problemas quando percebe que não precisa esperar por uma informação, para daí obter a outra. Elas podem ser obtidas *em paralelo*. É para resolver este problema que surgiu o Promise.all
 
 ## Promise.all
 
