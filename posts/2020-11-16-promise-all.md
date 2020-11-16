@@ -6,7 +6,7 @@ image: assets/img/1_3kqej4rwyrhek783d2kosg.jpeg
 category: js
 background: "#D6BA32"
 ---
-*Antes de começar: este não é um tutorial completo sobre Promise.All. Este post é apenas uma introdução sobre como usar o Promise.all.*
+*Antes de começar: este não é um tutorial completo sobre Promise.All. Este post é apenas uma introdução sobre como usá-lo.*
 
 ## Promises antes - "callback hell"
 
@@ -101,7 +101,7 @@ async function main2() {
 }
 ```
 
-Aqui, na verdade estamos esperando que o loop anterior do `for..of `termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await` paralelamente
+Aqui, na verdade estamos esperando que o loop anterior do `for..of`termine antes de iniciar o próximo. No entanto, não deveríamos fazer isso de maneira alguma, já que as solicitações não dependem umas das outras e podem ser iniciadas juntas e `await` paralelamente
 
 ```javascript
 const users = ['Sam', 'Hannah', 'Craig', 'Morgan'];
