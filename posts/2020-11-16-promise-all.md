@@ -122,6 +122,6 @@ Mais uma vez, se `doSomethingAsync` levar um segundo, o tempo sequencial será 
 
 Escrever código assim leva uma curva de aprendizado, mas com o tempo fica mais fácil de ler e escrever. O bom uso de `.maps` e `Promises` irá lhe ajudar muito no desenvolvimento de JavaScript. Todos os itens acima se aplicam também ao TypeScript, não importa se você está no Node ou na web, usando react, vue ou qualquer outra coisa. Este é um problema de JavaScript básico com uma solução de JavaScript básico.
 
-Fonte: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall)
+Fontes: [Sam Jarman](https://www.samjarman.co.nz/blog/promisedotall), [MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [ECMA](https://www.ecma-international.org/ecma-262/10.0/index.html#sec-promise.all)
 
 ![Gif do Papaleguas](assets/img/papaleguas.gif "Gif do Papaleguas")
