@@ -415,5 +415,3 @@ Tudo bem, isso é tudo por agora! Lembre-se de que, de forma alguma, essas não 
 Tem algum feedback sobre por que estou errado sobre isso? Sugestões para outros odores de código que você encontrou em seus componentes? Entre em contato!
 
 Adaptado de [React component code smells](https://antongunnarsson.com/react-component-code-smells/)
-
-![Thats all folks](assets/img/giphy-1-.gif "Thats all folks")
