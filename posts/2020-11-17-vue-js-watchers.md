@@ -1,7 +1,7 @@
 ---
 title: Vue.js Watchers
-description: Os watcher em vue lhe permitem configurar reações à mudanças em uma
-  determinada propriedade.
+description: Watchers em vue lhe permitem configurar reações toda vez que uma
+  informação mudar.
 date: 2020-11-17 06:44:48
 image: assets/img/screenshot_1.png
 category: vue
