@@ -9,7 +9,7 @@ background: "#42b883"
 ---
 Os watchers são recursos do Vue, similares ao evento onchange do JavaScript. Eles lhe permitem configurar uma ação a ser executada sempre que uma propriedade sofrer alteração.
 
-Uma opção muito intuitiva, contudo deve ser usada com moderação e seu uso não deve ser exagerado, na maioria dos casos é preferível usar uma [computed prop](https://br.vuejs.org/v2/guide/computed.html).
+Uma opção muito intuitiva, contudo deve ser usada com moderação e na maioria dos casos, é preferível usar uma [computed prop](https://br.vuejs.org/v2/guide/computed.html).
 
 ## Quando não usar
 
