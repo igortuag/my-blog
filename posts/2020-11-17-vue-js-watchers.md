@@ -13,9 +13,9 @@ Uma opção muito intuitiva, contudo deve ser usada com moderação e na maioria
 
 ## Quando não usar
 
-Caso você precise apenas alterar uma propriedade sempre que outra sofrer alteração é preferível usar uma computed prop.
+Caso você precise alterar apenas uma propriedade sempre que outra sofrer alteração, é mais adequado usar uma computed prop.
 
-Exemplo, imagine que você precise mostrar o nome completo de um usuário em tela. Ou seja, seu código precisa reagir à mudanças tanto da propriedade nome, quanto da propriedade sobrenome. Logo, é preferível usar uma computed prop, ficando o codigo assim:
+Exemplo, imagine que você precise mostrar o nome completo de um usuário em tela. Ou seja, seu código precisa reagir à mudanças tanto da propriedade nome, quanto da propriedade sobrenome. Logo, é preferível usar uma computed prop, ficando o código assim:
 
 ```javascript
 <template>
@@ -51,7 +51,7 @@ Exemplo, imagine que você precise mostrar o nome completo de um usuário em tel
 
 Costumo usar o watcher quando preciso escutar uma propriedade e alterar duas, ou quando preciso executar uma ação.
 
-Imagine o seguinte cenário: você precisa emitir uma notificação toda vez que seu usuário atingir o limite de acessos a um serviço restrito para não assinantes. Sendo assim, é preciso observar o contador de acessos e dentre outras coisas, emitir uma notificação quando o limite for atingido.
+Imagine o seguinte cenário: você precisa emitir uma notificação toda vez que seu usuário atingir o limite de acessos a um serviço restrito para não assinantes. Sendo assim, é preciso observar o contador de acessos e, dentre outras coisas, emitir uma notificação quando o limite for atingido.
 
 Um exemplo de implementação seria:
 
@@ -83,6 +83,6 @@ Um exemplo de implementação seria:
 </script>
 ```
 
-Eai, gostou? Já usa ou pretende usar? Vale a pena ler um pouco mais a respeito: [Dados Computados e Observadores ](https://br.vuejs.org/v2/guide/computed.html)
+E aí, gostou? Já usa ou pretende usar? Vale a pena ler um pouco mais a respeito: [Dados Computados e Observadores ](https://br.vuejs.org/v2/guide/computed.html)
 
 <iframe src="https://giphy.com/embed/1kkxWqT5nvLXupUTwK" width="475" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
