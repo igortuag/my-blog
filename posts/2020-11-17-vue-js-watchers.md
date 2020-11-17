@@ -83,6 +83,8 @@ Um exemplo de implementação seria:
 </script>
 ```
 
-E aí, gostou? Já usa ou pretende usar? Vale a pena ler um pouco mais a respeito: [Dados Computados e Observadores ](https://br.vuejs.org/v2/guide/computed.html)
+E aí, gostou? Já usa ou pretende usar? 
+
+Vale a pena ler um pouco mais a respeito: [Dados Computados e Observadores ](https://br.vuejs.org/v2/guide/computed.html)
 
 <iframe src="https://giphy.com/embed/1kkxWqT5nvLXupUTwK" width="475" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
