@@ -65,13 +65,13 @@ img {
 }
 
 body.dark {
-	--borders: #38444d;
-  --texts: #8899a6;
-  --postColor: #fff;
-  --highlight: #1fa1f2;
-  --mediumBackground: #192734;
-  --background: #16202c;
-  --white: #fff;
+  --borders: #495057;
+  --texts: #ADB5BD;
+  --postColor: #DEE2E6;
+  --highlight: #FFEC4F;
+  --mediumBackground: #2A2B2E;
+  --background: #212529;
+  --white: #E9ECEF;
   --black: #222;
 }
 
