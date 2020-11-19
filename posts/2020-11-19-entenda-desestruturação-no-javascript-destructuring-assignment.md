@@ -38,7 +38,7 @@ let [wordOne, wordTwo] = myArray;
 // wordTwo = 'there'
 ```
 
-Você também pode pular valores, deixando um espaço vazio na lista de desestruturação separada por vírgulas ...
+Você também pode pular valores, deixando um espaço entre as vírgulas ...
 
 ```javascript
 let myArray = ['hello', 'there', 'sam']
