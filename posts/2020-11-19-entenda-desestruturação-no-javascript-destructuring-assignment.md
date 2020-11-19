@@ -81,9 +81,9 @@ Note, apesar de serem muito parecidos, não podemos confundir o Rest com o um ou
 
 Essa é uma introdução muito rápida, mas por que você a usaria?\
 \
-Primeiro, ele pode dar mais expressão ao seu código. Acima, quando retirei *importantThing* e deixei o resto, isso diz para outro desenvolvedor, que ler seu código, para ele não se preocupar com o objeto inteiro e sim com apenas aquelas variáveis que você esta usando. \
+Primeiro, ele pode dar mais expressão ao seu código. Acima, quando retirei `timeToRead` e deixei o resto, isso diz para outro desenvolvedor, que ler seu código, para ele não se preocupar com o objeto inteiro e sim com apenas aquela variável que você esta usando. \
 \
-Em segundo lugar, sua autodocumentação, no caso de desestruturação de objetos, pode dar algumas dicas sobre as possíveis propriedades do objeto sem ter que encontrar sua definição, declaração ou instanciação. Isso é útil e economiza tempo.\
+Em segundo lugar, sua documentação, no caso de desestruturação de objetos, pode dar algumas dicas sobre as possíveis propriedades do objeto sem ter que encontrar sua definição, declaração ou instanciação. Isso é útil e economiza tempo.\
 \
 Gostou, quer saber um pouco mais? Segue alguns links que ajudam a entender melhor:
 
