@@ -91,4 +91,8 @@ Gostou, quer saber um pouco mais? Segue alguns links que ajudam a entender melho
 * [Parâmetros Rest](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_operator)
 * [Spread operator](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
+
+
+<iframe src="https://giphy.com/embed/joXtIlEbFrsA" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
 [](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters)
