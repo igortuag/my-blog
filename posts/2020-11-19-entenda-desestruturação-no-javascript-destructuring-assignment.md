@@ -12,7 +12,7 @@ Normalmente em JS, você pode atribuir um valor a uma variável como este.
 
 `let myString = 'Hello World!';`
 
-Mas e se o valor não for literal e vier de outro lugar? E se for um objeto gigante e você precisar apenas de algumas coisas dele. Nesses casos, você pode escrever algo assim.
+Mas e se o valor não for literal e vier de outro lugar? E se for um objeto gigante e você precisar apenas de algumas informações? Nesses casos, você pode escrever algo assim.
 
 ```javascript
 let someObject = {myString: 'foo', myInt: 42, myBool: true};
@@ -22,7 +22,7 @@ let myString = someObject.myString; // ou podemos usar myObject['myString']
 let myInt = myObject.myInt; // ou myObject['myInt']
 ```
 
-Agora com a atribuição de desestruturação:
+Mas o Javascript oferece outra forma, mais compacta e fácil de ler: a atribuição de desestruturação:
 
 ```javascript
 let {myString, myInt} = {myString: 'foo', myInt: 42};
