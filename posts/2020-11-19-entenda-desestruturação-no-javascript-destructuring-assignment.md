@@ -47,7 +47,7 @@ let [greeting,,name] = myArray;
 // name = 'sam'
 ```
 
-Neste cenário, algo que também ajuda muito é o parâmetros Rest, que permite passar o resto dos parâmetros de algum objeto ou Array.
+Neste cenário, algo que também ajuda muito é o parâmetros Rest, que permite passar todos parâmetros de algum objeto ou Array.
 
 ```javascript
 // Com arrays
