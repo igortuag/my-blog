@@ -28,7 +28,7 @@ Mas o Javascript oferece outra forma, mais compacta e fácil de ler: a atribuiç
 let {myString, myInt} = {myString: 'foo', myInt: 42};
 ```
 
-Bem melhor, não? Usamos a chave do objeto no lado esquerdo.\
+Bem melhor, não? Note, usamos as chaves do objeto no lado esquerdo.\
 E isso também funciona para arrays ...
 
 ```javascript
