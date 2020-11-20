@@ -6,9 +6,9 @@ image: assets/img/quebra-cabeca-2_xl.jpeg
 category: js
 background: "#D6BA32"
 ---
-À medida que avançamos no mundo do JavaScript (JS), nos deparamos com uma técnica chamada atribuição de desestruturação. Uma técnica muito útil quando você precisa de apenas partes de um determinado dado que você recebe.
+À medida que avançamos no mundo do JavaScript (JS), nos deparamos com uma técnica chamada atribuição de desestruturação. É uma técnica muito útil quando você precisa de apenas partes de um determinado dado que você recebe.
 
-Normalmente em JS, você pode atribuir um valor a uma variável como este.
+Normalmente em JS, você pode atribuir um valor a uma variável como este:
 
 `let myString = 'Hello World!';`
 
@@ -90,8 +90,6 @@ Gostou, quer saber um pouco mais? Segue alguns links que ajudam a entender melho
 * [Atribuição via desestruturação (destructuring assignment)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao)
 * [Parâmetros Rest](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_operator)
 * [Spread operator](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters)
-
-
 
 <iframe src="https://giphy.com/embed/joXtIlEbFrsA" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
