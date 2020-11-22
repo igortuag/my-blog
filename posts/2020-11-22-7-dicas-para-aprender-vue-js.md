@@ -6,7 +6,7 @@ image: assets/img/vuejs.png
 category: vue
 background: "#42b883"
 ---
-Hoje o framework frontend, que uso para desenvolver aplicações desktop e web no trabalho é Vue.js. Há muitos motivos para isso: sua simplicidade, recursos poderosos e do excelente desempenho.
+Uso o framework frontend Vue diariamente, seja para desenvolver aplicações desktop ou web. Há muitos motivos para isso: sua simplicidade, recursos poderosos e seu excelente desempenho.
 
 Comecei achando Vue fácil e quanto mais aprendo mas me impressiono com sua arquitetura e forma de lidar com as diferentes situações e problemas do desenvolvimento front-end.
 
