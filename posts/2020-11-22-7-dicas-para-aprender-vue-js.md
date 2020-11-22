@@ -24,7 +24,7 @@ Aqui está um pequeno exemplo:
 <h1> {{name}} </h1>
 ```
 
-Quando o valor de `name`mudar, a interface será atualizada, ou seja, reagirá a mudança. Essa é uma maneira muito básica de explicar a reatividade, mas existem muitos exemplos mais avançados para ajudá-lo a entender como ela funciona.
+Quando o valor de `name` mudar, a interface será atualizada, ou seja, reagirá a mudança. Essa é uma maneira muito básica de explicar a reatividade, mas existem muitos exemplos mais avançados para ajudá-lo a entender como ela funciona.
 
 ## **Onde a reatividade dá errado**
 
@@ -51,9 +51,9 @@ As coisas podem dar errado se você estiver acessando uma propriedade dentro de 
 </script>
 ```
 
-No exemplo acima, definimos `myObject`como um objeto vazio no método de dados. Depois, atribuimos a `myObject.message`um valor.
+No exemplo acima, definimos `myObject` como um objeto vazio no método de dados. Depois, atribuimos a `myObject.message` um valor.
 
-Isso resulta em `{{ myObject.message }}`nunca exibir nada, embora receba um valor em algum ponto. Mas por que isso ocorre?
+Isso resulta em `{{ myObject.message }}` nunca exibir nada, embora receba um valor quando o componente é montado. Mas por que isso ocorre?
 
 Isso ocorre basicamente porque o Vue não sabe da existência da propriedade `message` do objeto  `myObject` e, portanto, não pode reagir às mudanças em seu valor.
 
