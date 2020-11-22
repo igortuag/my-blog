@@ -106,6 +106,8 @@ Então, se as props serevem para passar informações apenas do componente pai p
 
 Você pode usar `$emit`para emitir valores ou eventos de componentes filhos para componentes pais. Você pode ouvir os eventos dos componentes pai usando `v-on:`ou `@`junto com o nome do evento ( `@button-clicked `neste caso). Com `$emit`, você pode passar um ou mais valores e eles podem ser de qualquer tipo.
 
+Saiba mais sobre como passar eventos na seção “[Manipulação de Eventos](https://br.vuejs.org/v2/guide/events.html)” na documentação oficial do Vuejs.
+
 # **3. Saiba mais sobre os gargalos de desempenho**
 
 Aplicações lentas são um pé no saco. Nosso trabalho como desenvolvedores de software é garantir que nossos aplicativos funcionem sem problemas. É fácil cair em certas armadilhas ao escrever aplicativos Vue, então, para ir do iniciante ao avançado, você precisará entendê-los bem e ser capaz de lidar com eles.
