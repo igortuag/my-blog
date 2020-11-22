@@ -24,21 +24,42 @@ Aqui está um pequeno exemplo:
 <h1> {{name}} </h1>
 ```
 
-Quando o valor de `name `mudar, a interface será atualizada, ou seja, reagirá a mudança. Essa é uma maneira muito básica de explicar a reatividade, mas existem muitos exemplos mais avançados para ajudá-lo a entender como ela funciona.
+Quando o valor de `name`mudar, a interface será atualizada, ou seja, reagirá a mudança. Essa é uma maneira muito básica de explicar a reatividade, mas existem muitos exemplos mais avançados para ajudá-lo a entender como ela funciona.
 
 ## **Onde a reatividade dá errado**
 
 As coisas podem dar errado se você estiver acessando uma propriedade dentro de um objeto, conforme explicado neste exemplo:
 
-No exemplo acima, definimos `myObject`como um objeto vazio no método de dados. Depois, damos `myObject.message`um valor.
+```javascript
+<template>
+  <div>
+    <p>{{ myObject.message }}</p>
+  </div>
+</template>
 
-Isso resulta em `{{ myObject.message }}`nunca exibir nada, embora receba um valor em algum ponto. Por que é que?
+<script>
+  export default {
+    data() {
+      return {
+        myObject: {}
+      }
+    },
+    mounted() {
+      this.myObject.message = 'Hello';
+    }
+  };
+</script>
+```
 
-Isso ocorre basicamente porque a Vue não sabe da existência do `myObject.message`imóvel e, portanto, não pode reagir às mudanças em seu valor.
+No exemplo acima, definimos `myObject`como um objeto vazio no método de dados. Depois, atribuimos a `myObject.message`um valor.
 
-## **Como faço para corrigir isso?**
+Isso resulta em `{{ myObject.message }}`nunca exibir nada, embora receba um valor em algum ponto. Mas por que isso ocorre?
 
-Existem algumas maneiras de garantir que o Vue reaja às mudanças na `myObject.message`propriedade. O mais simples é inicializá-lo com um valor vazio ou nulo:
+Isso ocorre basicamente porque o Vue não sabe da existência da propriedade `message` do objeto  `myObject` e, portanto, não pode reagir às mudanças em seu valor.
+
+## **Como corrigir isso?**
+
+Existem algumas maneiras de garantir que o Vue reaja às mudanças na propriedade `myObject.message`. O mais simples é inicializá-lo com um valor vazio ou nulo:
 
 ```jsx
 meuObjeto: { 
@@ -46,26 +67,26 @@ meuObjeto: {
 }
 ```
 
-Se `myObject.message`existir no método de dados, o Vue ouvirá e reagirá às mudanças em seu valor e atualizará a IU de acordo.
+Se `myObject.message` existir no método de dados, o Vue ouvirá e reagirá às mudanças em seu valor, atualizando a interface sempre que ocorrer uma mudança.
 
-Outra maneira de garantir que a IU seja atualizada é atualizar o `myObject`objeto completo desta forma:
+Outra maneira de garantir a reatividade é atualizar o objeto `myObject` completamente, desta forma:
 
 ```jsx
 this.myObject = {mensagem: 'Olá'}
 ```
 
-Uma vez que o Vue ouve e reage às mudanças em `myObject`, ele vai pegar essa mudança e atualizar a IU de acordo.
+Uma vez que o Vue ouve e reage às mudanças em `myObject`, ele vai pegar essa mudança e atualizar a interface da forma esperada.
 
-Resumindo, o Vue não ouve mudanças de propriedade em um objeto, a menos que conheça essas propriedades. As propriedades precisam ser definidas no método de dados ou você precisa atualizar o objeto inteiro em vez das propriedades para garantir que o Vue rastreie as alterações.
+Resumindo, o Vue não ouve mudanças de propriedade em um objeto, a menos que conheça essas propriedades. As propriedades precisam ser definidas no método `data` ou então atualizar o objeto inteiro em vez das propriedades para garantir que o Vue rastreie as alterações.
 
-Saiba mais sobre reatividade lendo a seção “ [Reatividade em profundidade](https://vuejs.org/v2/guide/reactivity.html) ” da documentação oficial.
+Saiba mais sobre reatividade lendo a seção “[Reatividade em profundidade](https://br.vuejs.org/v2/guide/reactivity.html)” na documentação oficial do Vuejs.
 
 Ao compreender bem a reatividade, você pode:
 
-* Cenários de depuração em que a IU não é atualizada quando você espera.
-* Identifique quando as visualizações são atualizadas e renderizadas novamente.
-* Entenda como as propriedades computadas são calculadas.
-* Meça o custo dos valores reativos que requerem algum esforço da CPU para cálculos (por exemplo, condições de formulário).
+* Resolver cenários de depuração em que a interface não é atualizada da forma esperada.
+* Identificar quando as visualizações são atualizadas e renderizadas novamente.
+* Entender como as propriedades computadas são calculadas.
+* Medir o custo dos valores reativos que requerem algum esforço da CPU para cálculos (por exemplo, condições de formulário).
 
 # **2. Comunicação ideal entre pais e filhos**
 
