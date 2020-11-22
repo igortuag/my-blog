@@ -120,7 +120,7 @@ Sem entrar em muitos detalhes, Vue tem um guia oficial sobre como [evitar vazam
 
 ## **Custos de renderização**
 
-Bibliotecas e estruturas de front-end como React e Vue estão nos tornando “preguiçosos”. Não vemos exatamente o que está acontecendo quando se trata de renderização. Apenas usamos um `v-for`e esperamos que as coisas funcionem. E isso é ótimo - mais poder para nós!
+Bibliotecas e estruturas de frontend como React e Vue estão nos tornando “preguiçosos”. Não vemos exatamente o que está acontecendo quando se trata de renderização. Apenas usamos um `v-for`e esperamos que as coisas funcionem. E isso é ótimo - uma coisa a menos para se preocupar!
 
 O problema é que é difícil entender quanto “custa” a renderização. Existem muitas maneiras inesperadas pelas quais um aplicativo Vue pode ter altos custos de renderização:
 
@@ -128,7 +128,7 @@ O problema é que é difícil entender quanto “custa” a renderização. Exi
 * A página está sendo atualizada com muita frequência.
 * Componentes de terceiros são usados e precisam de muito tempo para serem renderizados.
 
-Existem muitos cenários possíveis em que seu aplicativo tem altos custos de renderização e, como resultado, seus usuários terão atrasos. Em [este artigo](https://medium.com/better-programming/6-ways-to-speed-up-your-vue-js-application-2673a6f1cde4) , eu ir muito mais profundo em como você pode lidar com problemas de desempenho no Vue.
+Existem muitos cenários possíveis em que seu aplicativo tem altos custos de renderização e, como resultado, seus usuários terão atrasos.
 
 ## **Otimize o tratamento de eventos**
 
