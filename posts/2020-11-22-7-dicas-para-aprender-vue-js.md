@@ -132,11 +132,11 @@ Existem muitos cenários possíveis em que seu aplicativo tem altos custos de re
 
 ## **Otimize o tratamento de eventos**
 
-Isso se relaciona mais com o JavaScript do que estritamente Vue, mas é importante observar de qualquer maneira. Existem certos eventos que podem ser disparados com muita frequência. Se você adicionar um ouvinte de rolagem ou um `@mouseover`evento, o manipulador de eventos pode ser chamado muitas vezes.
+Isso é mais com o JavaScript do que especificamente com o Vue, mas é importante observar de qualquer maneira. Existem certos eventos que podem ser disparados com muita frequência. Se você adicionar um evento para ouvir a rolagem ou um evento `@mouseover`, o manipulador de eventos pode ser chamado muitas vezes.
 
-Se o manipulador de eventos não fizer muito, pode não ser um problema. Mas se o seu manipulador de eventos faz muitos cálculos e leva tempo para ser executado, ele pode causar sérias lentidões em seu aplicativo. A razão pela qual isso acontece é que a rolagem, o mouseover e outros eventos podem acionar o manipulador de eventos dezenas de vezes a cada segundo.
+Se o manipulador de eventos não estiver sendo muito utilizado, pode não ser um problema. Mas se o seu manipulador de eventos faz muitos cálculos e leva tempo para ser executado, ele pode causar sérias lentidões em seu aplicativo. A razão pela qual isso acontece é que a rolagem, o mouseover e outros eventos podem acionar o manipulador de eventos dezenas de vezes a cada segundo.
 
-A solução para isso é usar uma função `throttle`ou `debounce`em seu manipulador de eventos que limita o número de vezes que seu manipulador de eventos faz cálculos reais. [Lodash](http://lodash.com/) inclui ambas as funções e fornece uma maneira fácil de usá-las. Eu sugiro experimentar.
+A solução para isso é usar uma função `throttle` ou `debounce` em seu manipulador de eventos que limita o número de vezes que seu manipulador de eventos é ativado. [Lodash](http://lodash.com/) inclui ambas as funções e fornece uma maneira fácil de usá-las. Eu sugiro experimentar.
 
 Saber sobre isso o ajudará a escrever melhor JavaScript para o navegador em geral, mas como é um problema que pode ocorrer facilmente no Vue, é importante aprender sobre ele durante sua jornada para o domínio do Vue.
 
