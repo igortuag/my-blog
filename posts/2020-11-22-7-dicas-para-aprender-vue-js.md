@@ -88,27 +88,23 @@ Ao compreender bem a reatividade, você pode:
 * Entender como as propriedades computadas são calculadas.
 * Medir o custo dos valores reativos que requerem algum esforço da CPU para cálculos (por exemplo, condições de formulário).
 
-# **2. Comunicação ideal entre pais e filhos**
+# **2. Comunicação entre pais e filhos**
 
-Uma dúvida que eu tinha o tempo todo como um novato era como passar os dados de um filho para um componente pai. Ou como posso ter certeza de que um componente filho é atualizado quando algo muda no componente pai?
+Uma dúvida que eu tinha o tempo todo quando comecei era como passar os dados de um componente filho para um componente pai. Ou como posso ter certeza de que um componente filho é atualizado quando algo muda no componente pai?
 
-Essas questões se relacionam a como os componentes devem se comunicar uns com os outros. A maneira mais básica de fazer isso é usar adereços. Os suportes transmitem dados de pai para filho. Eles são imutáveis e podem ser de vários tipos, como strings, booleanos, matrizes, etc.
+Essas questões se relacionam a como os componentes devem se comunicar uns com os outros. A maneira mais básica de fazer isso é usar propriedades (props). As props transmitem dados de pai para filho. Eles são imutáveis e podem ser de vários tipos, como strings, booleanos, matrizes, etc.
 
 ```jsx
 <component: message = "myObject.message" />
 ```
 
-Os adereços formam um fluxo de dados unilateral, o que significa que sempre que houver `myObject.message`alterações no componente pai, o `message`prop será atualizado de acordo. O oposto *não* é *verdade* .
+As props formam um fluxo de dados unilateral, sempre que o `myObject.message` mudar no componente pai, a props `message` será atualizada. Mas o oposto *não* é *verdade*.
 
-Você não deve alterar o valor dos acessórios em componentes filhos, pois eles são imutáveis. Atualizá-los causará um aviso Vue e não acionará uma atualização no componente pai.
+Você não deve alterar o valor de uma props em componentes filhos, pois elas são imutáveis. Atualizá-las causará um aviso no console e não acionará uma atualização no componente pai.
 
-Então, se os adereços “caem”, como você faz os valores “subirem”? Para fazer os valores subirem, você precisa usar eventos. Você pode facilmente lembrar disso observando o seguinte: Apoios para baixo, eventos para cima.
+Então, se as props serevem para passar informações apenas do componente pai para o filho, como é possível passar do componente do filho para o pai? Para fazer isso, você precisa usar eventos. Mais especificamente, será necessário emitir um evento.
 
-Você pode usar adereços para transmitir valores aos componentes filhos, como viu no exemplo anterior. Se você precisar passar valores de um componente filho para um componente pai, você pode emitir eventos. Aqui está um exemplo que ilustra como isso é feito:
-
-Você pode usar `$emit`para emitir valores ou eventos de componentes filhos para componentes pais. Você pode ouvir os eventos dos componentes pai usando `v-on:`ou `@`junto com o nome do evento ( `@button-clicked`neste caso). Com `$emit`, você pode passar um ou mais valores e eles podem ser de qualquer tipo.
-
-Se você está sempre se perguntando como passar valores entre os componentes pai e filho, lembre-se da estratégia “abaixe os apoios, suba os eventos” e você poderá fazer com que funcione de maneira limpa.
+Você pode usar `$emit`para emitir valores ou eventos de componentes filhos para componentes pais. Você pode ouvir os eventos dos componentes pai usando `v-on:`ou `@`junto com o nome do evento ( `@button-clicked `neste caso). Com `$emit`, você pode passar um ou mais valores e eles podem ser de qualquer tipo.
 
 # **3. Saiba mais sobre os gargalos de desempenho**
 
