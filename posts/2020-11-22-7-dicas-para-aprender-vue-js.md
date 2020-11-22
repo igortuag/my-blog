@@ -142,17 +142,17 @@ Saber sobre isso o ajudará a escrever melhor JavaScript para o navegador em ger
 
 # **4. Aprenda o ecossistema Vue**
 
-Para se tornar avançado no desenvolvimento do Vue, você terá que aprender sobre os pacotes e componentes que compõem o ecossistema do Vue. A maioria dos aplicativos exigirá pelo menos um dos seguintes, mas para dominar a estrutura, acredito que você deve se familiarizar com todos os três.
+Para se tornar avançado no desenvolvimento do Vue, você terá que aprender sobre os pacotes e componentes que compõem o ecossistema do Vue. A maioria das aplicações web exigirá pelo menos um dos seguintes, mas para dominar a estrutura, acredito que você deve se familiarizar com todos os três.
 
 ## **Vuex**
 
-A maioria dos aplicativos front-end modernos, especialmente SPAs, depende de algum tipo de gerenciamento de estado. [Vuex](https://vuex.vuejs.org/) é a biblioteca oficial de gerenciamento de estado para aplicativos Vue e se integra bem com as ferramentas de desenvolvimento oficiais do Vue.
+A maioria dos aplicativos front-end modernos, especialmente SPAs, depende de algum tipo de gerenciamento de estado. [Vuex](https://vuex.vuejs.org/ptbr/) é a biblioteca oficial de gerenciamento de estado para aplicações em Vue e se integra bem com as ferramentas de desenvolvimento oficiais do Vue.
 
-Ele serve como um armazenamento centralizado que todos os componentes podem acessar para buscar ou modificar os dados globais do aplicativo. Os componentes podem e devem ter dados locais, mas usar o gerenciamento de estado é fundamental para os aplicativos, pois eles se tornam mais complexos e vários componentes dependem dos mesmos dados globais.
+Ele serve como um armazenamento centralizado que todos os componentes podem acessar para buscar ou modificar os dados globais do aplicativo. Os componentes podem e devem ter dados locais, mas usar o gerenciamento de estado é fundamental para as aplicações, pois eles se tornam mais complexos e vários componentes dependem dos mesmos dados globais.
 
 ## **Vue Router**
 
-Usar o Vue sem o [Vue Router](https://router.vuejs.org/) pode ser raro, mas já vi isso em alguns projetos. Como a maioria das pessoas aqui já está familiarizada com o Vue Router, não entrarei em muitos detalhes. Mencionarei apenas que o aprendizado `vue-router`é fundamental para a criação de SPAs, e os SPAs são o caminho a percorrer para a maioria dos aplicativos front-end modernos.
+Usar o Vue sem o [Vue Router](https://bt.router.vuejs.org/) pode ser raro. O aprendizado `vue-router` é fundamental para a criação de SPAs, e os SPAs são o caminho a percorrer para a maioria das aplicações web modernas.
 
 ## **Vue SSR**
 
