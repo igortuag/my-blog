@@ -156,9 +156,9 @@ Usar o Vue sem o [Vue Router](https://bt.router.vuejs.org/) pode ser raro. O 
 
 ## **Vue SSR**
 
-Para realmente fazer-se sobressair, você deve aprender SSR ou usando o oficial [biblioteca Vue](https://ssr.vuejs.org/) ou aprendendo [Nuxt.js](https://nuxtjs.org/) . A necessidade de renderização do lado do servidor geralmente surge quando o desempenho de um aplicativo de navegador começa a cair ou quando você não pode contar com o dispositivo do usuário para lidar com a renderização e é preferível fazê-lo no lado do servidor. Ajuda a otimizar o tempo até o conteúdo - especialmente em dispositivos lentos ou Internet lenta - e também é útil por motivos de SEO.
+Para realmente fazer-se sobressair, você deve aprender SSR ou usando o oficial [biblioteca Vue](https://ssr.vuejs.org/) ou aprendendo [Nuxt.js](https://nuxtjs.org/). A necessidade de renderização do lado do servidor geralmente surge quando o desempenho da aplicação começa a cair, quando você não pode contar com o dispositivo do usuário para lidar com a renderização, ou quando é necessário otimizar o SEO, nesses casos é preferível fazer a renderização no lado do servidor. Ajuda a otimizar o tempo até o conteúdo - especialmente em dispositivos lentos ou Internet lenta - e também é útil por motivos de SEO.
 
-Uma vez que a maioria dos trabalhos e projetos freelance exigirá pelo menos dois dos três acima, acredito que aprendê-los é uma rua de mão única para os desenvolvedores do Vue.
+Uma vez que a maioria dos trabalhos e projetos exigirá pelo menos dois dos três acima, acredito que aprendê-los é um pré-requisito para os desenvolvedores do Vue.
 
 # **5. Use os componentes da maneira certa**
 
