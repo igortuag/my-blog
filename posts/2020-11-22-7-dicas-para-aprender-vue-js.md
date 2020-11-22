@@ -162,17 +162,15 @@ Uma vez que a maioria dos trabalhos e projetos exigirá pelo menos dois dos trê
 
 # **5. Use os componentes da maneira certa**
 
-Uma das coisas que vejo dar errado com os desenvolvedores Vue inexperientes é como eles estruturam os componentes. Muitas vezes, os aplicativos Vue contêm apenas um ou alguns mega-componentes que fazem todo o trabalho. Obviamente, essa não é a maneira certa de estruturar seus componentes.
+Uma das coisas que pode errado com os desenvolvedores Vue é como eles estruturam os componentes. Muitas vezes, as aplicações em Vue contêm apenas um ou alguns mega-componentes que fazem todo o trabalho. Obviamente, essa não é a maneira certa de estruturar seus componentes.
 
-Quanto mais experiente você se tornar, mais perceberá a importância de estruturar seu aplicativo em componentes menores, onde cada um faz bem uma (ou algumas) coisas. Existem muitos motivos pelos quais o uso de componentes menores ajuda seu aplicativo:
+Quanto mais experiente você se tornar, mais perceberá a importância de estruturar sua aplicação em componentes menores, onde cada um faz bem uma (ou algumas) coisas. Existem muitos motivos pelos quais o uso de componentes menores ajuda seu aplicativo:
 
-* Você pode reutilizar pequenos componentes em todo o seu aplicativo.
-* Seu código está mais limpo e organizado.
-* O Vue pode renderizar componentes filhos com mais eficiência em `v-for`
+* Você pode reutilizar pequenos componentes em toda a sua aplicação.
+* Seu código ficará mais limpo e organizado.
+* O Vue pode renderizar componentes filhos com mais eficiência em um loop `v-for`.
 
-    loops.
-
-Se você tiver uma entrevista com a Vue e for solicitado a fazer um projeto de teste, entregar um aplicativo bem organizado certamente impressionará seus entrevistadores!
+Se você tiver uma entrevista com a Vue e lhe pedirem para fazer um projeto teste, entregar um aplicativo bem organizado certamente impressionará seus entrevistadores!
 
 # **6. Faça do Mixins seus melhores amigos**
 
