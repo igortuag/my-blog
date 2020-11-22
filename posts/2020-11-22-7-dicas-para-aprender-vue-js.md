@@ -186,34 +186,36 @@ As possibilidades são infinitas, mas a lição é clara: você precisa começar
 
 # **7. Aprenda as Diretivas Avançadas**
 
-Além de `v-for`, `v-if`e outras diretrizes comuns, Vue tem algumas directivas que são menos comum mas ainda muito útil para conhecer.
+Além de `v-for`, `v-if` e outras diretrizes comuns, Vue tem algumas directivas que são menos usadas, mas ainda muito úteis e vale a pena conhecer.
 
-## **v-uma vez**
+## **v-once**
 
-Você pode usar `v-once`para gerar um valor uma vez e torná-lo não reativo. Isso significa que nas alterações subsequentes, o valor não será renderizado novamente. Isso pode ajudá-lo a otimizar o desempenho em determinados cenários:
+Você pode usar `v-once` para gerar um valor uma vez e torná-lo não reativo. Isso significa que nas alterações subsequentes, o valor não será renderizado novamente. Isso pode ajudá-lo a otimizar o desempenho em determinados cenários:
 
-```
+```javascript
 <span v-once> {{name}} </span>
 ```
 
 ## **Modificadores de diretiva de evento**
 
-Para `v-on`eventos, existem alguns modificadores muito úteis que você pode usar. Um que eu pessoalmente uso com frequência é o `@click.prevent`, que chama automaticamente `preventDefault()`no evento de clique.
+Para diretiva `v-on` que serve para manipular eventos, existem alguns modificadores muito úteis que você pode usar. Um deles é o `@click.prevent`, que chama automaticamente `preventDefault()`no evento de clique.
 
-```
+```javascript
 <a href="#" @click.prevent="processClick"> Clique aqui </a>
 ```
 
-Você pode ver uma [lista completa de modificadores de eventos](https://vuejs.org/v2/guide/events.html#Event-Modifiers) na documentação.
+Você pode ver uma [lista completa de modificadores de eventos](https://br.vuejs.org/v2/guide/events.html#Event-Modifiers) na documentação.
 
 ## **Diretivas personalizadas**
 
-O Vue permite que você registre suas próprias diretivas personalizadas, conforme explicado na [documentação](https://vuejs.org/v2/guide/custom-directive.html) . Se você estiver replicando o mesmo comportamento várias vezes em todo o seu aplicativo, pode fazer sentido criar uma diretiva personalizada que possa ser reutilizada.
+O Vue permite que você registre suas próprias diretivas personalizadas, conforme explicado na [documentação](https://br.vuejs.org/v2/guide/custom-directive.html) . Se você estiver replicando o mesmo comportamento várias vezes em todo o seu aplicativo, pode fazer sentido criar uma diretiva personalizada que possa ser reutilizada.
 
 Além disso, muitos pacotes de terceiros apresentarão suas próprias diretivas personalizadas que você pode usar.
 
-A chave quando se trata de diretivas personalizadas é criá-las apenas quando necessário e evitar exagerar com as diretivas personalizadas que são usadas apenas uma ou duas vezes.
+A chave quando se trata de diretivas personalizadas é criá-las apenas quando necessário e evitar criar diretivas personalizadas que são usadas apenas uma ou duas vezes.
 
 # **Continue praticando**
 
-Você pode começar lendo mais sobre todos os conceitos que descrevi ou pode ler uma seção da documentação oficial que não leu. Leia, aprenda e certifique-se de colocar em prática. Mesmo que você apenas dê um pequeno passo em direção ao domínio do Vue hoje, ele pode percorrer um longo caminho se você mantê-lo consistentemente.
+Você pode começar lendo mais sobre todos os conceitos que descrevi ou pode ler uma seção da documentação oficial que não leu. Leia, aprenda e certifique-se de colocar em prática.
+
+> Mesmo que você dê apenas um pequeno passo em direção ao domínio do Vue hoje, pode chegar muito longe dando pequenos passos todos os dias.
