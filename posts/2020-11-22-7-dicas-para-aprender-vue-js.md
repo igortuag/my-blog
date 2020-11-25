@@ -216,7 +216,7 @@ A chave quando se trata de diretivas personalizadas é criá-las apenas quando n
 
 # **Continue praticando**
 
-Você pode começar lendo mais sobre todos os conceitos que descrevi ou pode ler uma seção da documentação oficial que não leu. Leia, aprenda e certifique-se de colocar em prática.
+Você pode começar lendo mais sobre todos os conceitos que descrevi ou pode ler uma seção da documentação oficial. Leia, aprenda e certifique-se de colocar em prática.
 
 > Mesmo que você dê apenas um pequeno passo em direção ao domínio do Vue hoje, pode chegar muito longe dando pequenos passos todos os dias.
 
