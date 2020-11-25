@@ -92,7 +92,7 @@ Ao compreender bem a reatividade, você pode:
 
 Uma dúvida que eu tinha o tempo todo quando comecei era como passar os dados de um componente filho para um componente pai. Ou como posso ter certeza de que um componente filho é atualizado quando algo muda no componente pai?
 
-Essas questões se relacionam a como os componentes devem se comunicar uns com os outros. A maneira mais básica de fazer isso é usar propriedades (props). As props transmitem dados de pai para filho. Eles são imutáveis e podem ser de vários tipos, como strings, booleanos, matrizes, etc.
+Essas questões se relacionam em como os componentes devem se comunicar uns com os outros. A maneira mais básica de fazer isso é usar propriedades (props). As props transmitem dados de pai para filho. Eles são imutáveis e podem ser de vários tipos, como strings, booleanos, matrizes, etc.
 
 ```jsx
 <component: message = "myObject.message" />
