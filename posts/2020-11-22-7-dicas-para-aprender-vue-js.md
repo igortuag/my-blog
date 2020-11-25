@@ -120,7 +120,7 @@ Sem entrar em muitos detalhes, Vue tem um guia oficial sobre como [evitar vazam
 
 ## **Custos de renderização**
 
-Bibliotecas e estruturas de frontend como React e Vue estão nos tornando “preguiçosos”. Não vemos exatamente o que está acontecendo quando se trata de renderização. Apenas usamos um `v-for`e esperamos que as coisas funcionem. E isso é ótimo - uma coisa a menos para se preocupar!
+Bibliotecas e estruturas de frontend como React e Vue estão nos tornando “preguiçosos”. Não vemos exatamente o que está acontecendo quando se trata de renderização. Apenas usamos um `v-for` e esperamos que as coisas funcionem. E isso é ótimo - uma coisa a menos para se preocupar!
 
 O problema é que é difícil entender quanto “custa” a renderização. Existem muitas maneiras inesperadas pelas quais um aplicativo Vue pode ter altos custos de renderização:
 
@@ -136,7 +136,7 @@ Isso é mais com o JavaScript do que especificamente com o Vue, mas é important
 
 Se o manipulador de eventos não estiver sendo muito utilizado, pode não ser um problema. Mas se o seu manipulador de eventos faz muitos cálculos e leva tempo para ser executado, ele pode causar sérias lentidões em seu aplicativo. A razão pela qual isso acontece é que a rolagem, o mouseover e outros eventos podem acionar o manipulador de eventos dezenas de vezes a cada segundo.
 
-A solução para isso é usar uma função `throttle` ou `debounce` em seu manipulador de eventos que limita o número de vezes que seu manipulador de eventos é ativado. [Lodash](http://lodash.com/) inclui ambas as funções e fornece uma maneira fácil de usá-las. Eu sugiro experimentar.
+A solução para isso é usar uma função `throttle` ou `debounce` em seu manipulador de eventos, o que limita o número de vezes que seu manipulador de eventos é ativado. [Lodash](http://lodash.com/) inclui ambas as funções e fornece uma maneira fácil de usá-las. Eu sugiro experimentar.
 
 Saber sobre isso o ajudará a escrever melhor JavaScript para o navegador em geral, mas como é um problema que pode ocorrer facilmente no Vue, é importante aprender sobre ele durante sua jornada para o domínio do Vue.
 
