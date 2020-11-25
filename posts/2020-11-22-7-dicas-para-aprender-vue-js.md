@@ -170,7 +170,7 @@ Quanto mais experiente você se tornar, mais perceberá a importância de estrut
 * Seu código ficará mais limpo e organizado.
 * O Vue pode renderizar componentes filhos com mais eficiência em um loop `v-for`.
 
-Se você tiver uma entrevista com a Vue e lhe pedirem para fazer um projeto teste, entregar um aplicativo bem organizado certamente impressionará seus entrevistadores!
+Se você tiver uma entrevista com Vue e lhe pedirem para fazer um projeto teste, entregar um aplicativo bem organizado certamente impressionará seus entrevistadores!
 
 # **6. Faça do Mixins seus melhores amigos**
 
