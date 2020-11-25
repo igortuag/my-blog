@@ -104,7 +104,7 @@ Você não deve alterar o valor de uma props em componentes filhos, pois elas s�
 
 Então, se as props servem para passar informações apenas do componente pai para o filho, como é possível passar do componente do filho para o pai? Para fazer isso, você precisa usar eventos. Mais especificamente, será necessário emitir um evento.
 
-Você pode usar `$emit` para emitir valores ou eventos de componentes filhos para componentes pais. Você pode ouvir os eventos dos componentes pai usando `v-on:`ou `@`junto com o nome do evento ( `@button-clicked`neste caso). Com `$emit`, você pode passar um ou mais valores e eles podem ser de qualquer tipo.
+Você pode usar `$emit` para emitir valores ou eventos de componentes filhos para componentes pais. Você pode ouvir os eventos dos componentes pai usando `v-on:`ou `@`junto com o nome do evento ( `@button-clicked` neste caso). Com `$emit`, você pode passar um ou mais valores e eles podem ser de qualquer tipo.
 
 Saiba mais sobre como passar eventos na seção “[Manipulação de Eventos](https://br.vuejs.org/v2/guide/events.html)” na documentação oficial do Vuejs.
 
@@ -198,7 +198,7 @@ Você pode usar `v-once` para gerar um valor uma vez e torná-lo não reativo.�
 
 ## **Modificadores de diretiva de evento**
 
-Para diretiva `v-on` que serve para manipular eventos, existem alguns modificadores muito úteis que você pode usar. Um deles é o `@click.prevent`, que chama automaticamente `preventDefault()`no evento de clique.
+Para diretiva `v-on` que serve para manipular eventos, existem alguns modificadores muito úteis que você pode usar. Um deles é o `@click.prevent`, que chama automaticamente `preventDefault()` no evento de clique.
 
 ```javascript
 <a href="#" @click.prevent="processClick"> Clique aqui </a>
