@@ -154,9 +154,9 @@ Ele serve como um armazenamento centralizado que todos os componentes podem aces
 
 Usar o Vue sem o [Vue Router](https://bt.router.vuejs.org/) pode ser raro. O aprendizado `vue-router` é fundamental para a criação de SPAs, e os SPAs são o caminho a percorrer para a maioria das aplicações web modernas.
 
-## **Vue SSR**
+## **Vue SSR (Server Side Render)**
 
-Para realmente fazer-se sobressair, você deve aprender SSR ou usando o oficial [biblioteca Vue](https://ssr.vuejs.org/) ou aprendendo [Nuxt.js](https://nuxtjs.org/). A necessidade de renderização do lado do servidor geralmente surge quando o desempenho da aplicação começa a cair, quando você não pode contar com o dispositivo do usuário para lidar com a renderização, ou quando é necessário otimizar o SEO, nesses casos é preferível fazer a renderização no lado do servidor. Ajuda a otimizar o tempo até o conteúdo - especialmente em dispositivos lentos ou Internet lenta - e também é útil por motivos de SEO.
+Para realmente se sobressair, você deve aprender SSR(Server Side Render), usando a [biblioteca Vue](https://ssr.vuejs.org/) oficial ou aprendendo [Nuxt.js](https://nuxtjs.org/). A necessidade de renderização do lado do servidor geralmente surge: quando o desempenho da aplicação começa a cair; quando você não pode contar com o dispositivo do usuário para lidar com a renderização, ou quando é necessário otimizar o SEO. Nesses casos, é preferível fazer a renderização no lado do servidor, o que ajuda a otimizar o tempo até o conteúdo - especialmente em dispositivos lentos ou Internet lenta - e também é útil por motivos de SEO.
 
 Uma vez que a maioria dos trabalhos e projetos exigirá pelo menos dois dos três acima, acredito que aprendê-los é um pré-requisito para os desenvolvedores do Vue.
 
