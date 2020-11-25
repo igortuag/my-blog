@@ -114,7 +114,7 @@ Aplicações lentas são um grande problema. E nosso trabalho como desenvolvedo
 
 ## **Perdas de memória**
 
-Vazamentos de memória são um problema comum de desempenho em aplicações web. Mesmo que o próprio Vue não cause vazamentos de memória sem motivo, isso pode acontecer incorporando bibliotecas de terceiros ou escrevendo código de forma errada. É especialmente importante evitar vazamentos de memória ao criar aplicações de página única, as chamdas em inglês: Single Page Aplication (SPAs) porque, por design, os usuários não atualizam seu navegador, portanto, o aplicativo tem que fazer toda a coleta de lixo.
+Vazamentos de memória são um problema comum de desempenho em aplicações web. Mesmo que o próprio Vue não cause vazamentos de memória sem motivo, isso pode acontecer incorporando bibliotecas de terceiros ou escrevendo código de forma errada. É especialmente importante evitar vazamentos de memória ao criar aplicações de página única, as chamadas em inglês: Single Page Aplication (SPAs) porque, por design, os usuários não atualizam seu navegador e o aplicativo tem que fazer toda a coleta de lixo.
 
 Sem entrar em muitos detalhes, Vue tem um guia oficial sobre como [evitar vazamentos de memória](https://br.vuejs.org/v2/cookbook/avoiding-memory-leaks.html). Se você é um desenvolvedor que está tentando dominar o Vue, sugiro que leia.
 
