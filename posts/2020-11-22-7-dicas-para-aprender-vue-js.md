@@ -174,13 +174,13 @@ Se você tiver uma entrevista com Vue e lhe pedirem para fazer um projeto teste,
 
 # **6. Faça do Mixins seus melhores amigos**
 
-Mixins ajudam muito na hora de desenvolver em Vue. Mixins permitem que você:
+Mixins ajudam muito na hora de desenvolver em Vue. Eles permitem que você:
 
 * Reutilize o código em todo o seu projeto.
 * Escreva o código apenas uma vez (princípio DRY).
-* Refatore e mantenha seu código mais facilmente.
+* Refatore e mantenha seu código mais facilmente organizado.
 
-Mixins oferecem muita liberdade e você pode usá-los como quiser. Por exemplo, você pode ter um grupo de componentes com recursos semelhantes, então você pode querer criar um mixin que inclui todos os recursos comuns, componentes e propriedades computadas. Ou você pode ter certas ações, filtros ou condições que são muito usados em todo o seu aplicativo, nestes casos ao invez de ficar reptindo, você pode criar um pequeno mixin e incluií-lo onde for preciso.
+Mixins oferecem muita liberdade e você pode usá-los como quiser. Por exemplo, você pode ter um grupo de componentes com recursos semelhantes. Então você pode querer criar um mixin que inclui todos os recursos comuns, componentes e propriedades computadas, ou você pode ter certas ações, filtros ou condições que são muito usados em todo o seu aplicativo .Nestes casos ao invés de ficar repetindo, você pode criar um pequeno mixin e incluí-lo onde for preciso.
 
 As possibilidades são infinitas, mas a lição é clara: você precisa começar a usar [mixins](https://br.vuejs.org/v2/guide/mixins.html) para se tornar um desenvolvedor Vue avançado.
 
