@@ -8,9 +8,9 @@ background: "#42b883"
 ---
 Uso o framework frontend Vue diariamente, seja para desenvolver aplicações desktop ou web. Há muitos motivos para isso: sua simplicidade, recursos poderosos e seu excelente desempenho.
 
-Comecei achando Vue fácil e quanto mais aprendo mas me impressiono com sua arquitetura e forma de lidar com as diferentes situações e problemas do desenvolvimento front-end.
+Comecei achando Vue fácil e quanto mais aprendo, mais me impressiono com sua arquitetura e forma de lidar com as diferentes situações e problemas do desenvolvimento front-end.
 
-As dicas a seguir podem lhe ajudar a entender melhor este exclente framework. 
+As dicas a seguir podem lhe ajudar a entender melhor este excelente framework. 
 
 # **1. Compreenda totalmente a reatividade**
 
