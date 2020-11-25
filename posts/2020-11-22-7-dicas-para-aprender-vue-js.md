@@ -186,7 +186,7 @@ As possibilidades são infinitas, mas a lição é clara: você precisa começar
 
 # **7. Aprenda as Diretivas Avançadas**
 
-Além de `v-for`, `v-if` e outras diretrizes comuns, Vue tem algumas directivas que são menos usadas, mas ainda muito úteis e vale a pena conhecer.
+Além de `v-for`, `v-if` e outras diretrizes comuns, Vue tem algumas diretivas que são menos usadas, mas ainda muito úteis e vale a pena conhecer.
 
 ## **v-once**
 
