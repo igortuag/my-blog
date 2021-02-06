@@ -33,13 +33,13 @@ const AboutPage = () => (
       <p>
         Hoje moro em Vila Velha/ES e faço parte do time de desenvolvedores da {" "}
         <a
-          href="https://uppersoft.com.br/"
+          href="http://imaginationmedia.com/"
           rel="noopener noreferrer"
           target="_blank"
         >
-        Uppersoft
+        Imagination Media
         </a>
-        {" "}, atuando principalmente com as seguintes tecnologias: JavaScript e seus frameworks como Vue e Electron, HTML e CSS com pré-processadores.
+        {" "}, atuando principalmente com as seguintes tecnologias: ReactJs, Graphql e nodejs.
       </p>
 
       <p>Sou muito bem casado e feliz com minha esposa{" "}
